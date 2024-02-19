@@ -9,7 +9,7 @@ $client = new Client('Z5R6TMf4M0FDuypDqcwQIwtt');
 // Get all Stories from the article folder
 $client->getStories([
     'starts_with' => 'blog',
-    "page" =>  2,
+    "page" =>  3,
 ]);
 $data = $client->getBody();
 $stories = $data["stories"];
