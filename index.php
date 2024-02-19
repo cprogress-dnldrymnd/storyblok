@@ -11,6 +11,6 @@ $client->getStories(['starts_with' => 'blog']);
 $data = $client->getBody();
 ?>
 <pre>
-    <?php print_r($data["stories"]); ?>
+    <?php print_r($data["rels"]); ?>
 </pre>
 
