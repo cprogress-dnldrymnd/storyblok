@@ -14,20 +14,25 @@ $stories = $data["stories"];
 
 <?php
 
-    $blog_array = array();
+$blog_array = array();
 
-    foreach($stories as $story) {
+foreach ($stories as $story) {
 
-        $content = $story['content']['introText'];
-        $content = $content['content'];
-        $blog_array[] = array(
-            'name' => $story['name'],
-            'date' => $story['published_at'],
-            'content' => $content,
-        );
+    $content = $story['content']['introText'];
+
+    foreach ($content as $contentx) {
+        echo '<pre>';
+        var_dump($contentx);
+        echo '</pre>';
     }
+    $blog_array[] = array(
+        'name' => $story['name'],
+        'date' => $story['published_at'],
+        'content' => $content,
+    );
+}
 ?>
 
 <pre>
-    <?php print_r($blog_array); ?>
+    <?php var_dump($blog_array); ?>
 </pre>
