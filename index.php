@@ -11,7 +11,18 @@ $client->getStories(['starts_with' => 'blog']);
 $data = $client->getBody();
 $stories = $data["stories"];
 ?>
-<pre>
-    <?php print_r($stories); ?>
-</pre>
 
+<?php
+
+    $blog_array = array();
+
+    foreach($stories as $story) {
+        $blog_array[] = array(
+            'name' => $story['name']
+        );
+    }
+?>
+
+<pre>
+    <?php print_r($blog_array); ?>
+</pre>
