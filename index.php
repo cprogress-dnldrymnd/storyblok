@@ -8,8 +8,9 @@ $client = new Client('Z5R6TMf4M0FDuypDqcwQIwtt');
 
 // Get all Stories from the article folder
 $client->getStories(['starts_with' => 'blog']);
-$data = $client->getBody();
-$stories = $data["stories"];
+$options['per_page'] = 3;
+$response = $client->getAll('stories/', $options, true);
+$stories = $response["stories"];
 ?>
 
 <?php
@@ -21,6 +22,9 @@ foreach ($stories as $story) {
     $content = $story['content']['introText'];
 
     foreach ($content as $key => $contentx) {
+        if($key == 'content') {
+            
+        }
         echo '<pre>';
         echo $key;
         echo '</pre>';
