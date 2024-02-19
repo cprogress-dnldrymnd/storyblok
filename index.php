@@ -24,5 +24,5 @@ $stories = $data["stories"];
 ?>
 
 <pre>
-    <?php print_r($stories); ?>
+    <?php print_r($blog_array); ?>
 </pre>
