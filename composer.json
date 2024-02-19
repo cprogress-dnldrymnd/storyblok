@@ -1,0 +1,5 @@
+{
+    "require": {
+        "storyblok/php-client": "^2.6"
+    }
+}
