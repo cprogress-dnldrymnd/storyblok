@@ -9,7 +9,7 @@ $client = new Client('Z5R6TMf4M0FDuypDqcwQIwtt');
 // Get all Stories from the article folder
 $client->getStories([
     'starts_with' => 'blog',
-    'per_page' => 70
+    "page" =>  2,
 ]);
 $data = $client->getBody();
 $stories = $data["stories"];
@@ -32,7 +32,7 @@ foreach ($stories as $story) {
         echo '</pre>';
     }
     $blog_array[] = array(
-        'name' => $story['name'],
+        'name' => $story['content']['title'],
         'date' => $story['published_at'],
         'content' => $content,
     );
