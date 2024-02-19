@@ -25,10 +25,10 @@ foreach ($stories as $story) {
 
     foreach ($content as $key => $contentx) {
         if ($key == 'content') {
+            echo '<pre>';
+            echo $key;
+            echo '</pre>';
         }
-        echo '<pre>';
-        echo $key;
-        echo '</pre>';
     }
     $blog_array[] = array(
         'name' => $story['content']['introText'],
