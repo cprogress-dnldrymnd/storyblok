@@ -9,15 +9,9 @@ $client = new Client('Z5R6TMf4M0FDuypDqcwQIwtt');
 // Get all Stories from the article folder
 $client->getStories(['starts_with' => 'blog']);
 $data = $client->getBody();
-echo $data["cv"] . PHP_EOL;
-print_r($data["rels"]);
-print_r($data["links"]);
+$stories = $data["stories"];
 ?>
 <pre>
-    <?php 
-    echo $data["cv"] . PHP_EOL;
-    print_r($data["rels"]);
-    print_r($data["links"]);
-    ?>
+    <?php print_r($stories); ?>
 </pre>
 
