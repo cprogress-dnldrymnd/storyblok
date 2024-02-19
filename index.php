@@ -22,7 +22,6 @@ foreach ($stories as $story) {
 
     foreach ($content as $contentx) {
         echo '<pre>';
-        var_dump($contentx);
         echo '</pre>';
     }
     $blog_array[] = array(
