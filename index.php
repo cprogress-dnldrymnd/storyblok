@@ -7,7 +7,7 @@ use Storyblok\Client;
 $client = new Client('Z5R6TMf4M0FDuypDqcwQIwtt');
 
 // Get all Stories from the article folder
-$client->getStories(['starts_with' => 'article']);
+$client->getStories(['starts_with' => 'blog']);
 $data = $client->getBody();
 print_r($data["stories"]);
 echo $data["cv"] . PHP_EOL;
