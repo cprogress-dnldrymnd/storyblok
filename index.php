@@ -7,7 +7,10 @@ use Storyblok\Client;
 $client = new Client('Z5R6TMf4M0FDuypDqcwQIwtt');
 
 // Get all Stories from the article folder
-$client->getStories(['starts_with' => 'blog']);
+$client->getStories([
+    'starts_with' => 'blog',
+    'per_page' => 70
+]);
 $data = $client->getBody();
 $stories = $data["stories"];
 ?>
