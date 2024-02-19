@@ -17,7 +17,7 @@ $stories = $data["stories"];
 ?>
 
 <?php
-
+echo count($stories);
 $blog_array = array();
 
 foreach ($stories as $story) {
