@@ -10,7 +10,7 @@ $client = new Client('Z5R6TMf4M0FDuypDqcwQIwtt');
 $client->getStories(['starts_with' => 'blog']);
 $options['per_page'] = 3;
 $response = $client->getAll('stories/', $options, true);
-$stories = $response["stories"];
+$stories = $response;
 ?>
 
 <?php
