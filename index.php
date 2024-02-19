@@ -39,5 +39,5 @@ foreach ($stories as $story) {
 ?>
 
 <pre>
-    <?php var_dump($stories); ?>
+    <?php var_dump($blog_array); ?>
 </pre>
