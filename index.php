@@ -19,6 +19,7 @@ $stories = $data["stories"];
     foreach($stories as $story) {
 
         $content = $story['content']['introText'];
+        $content = $content['content'];
         $blog_array[] = array(
             'name' => $story['name'],
             'date' => $story['published_at'],
