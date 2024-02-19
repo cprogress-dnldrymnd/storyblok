@@ -20,8 +20,9 @@ foreach ($stories as $story) {
 
     $content = $story['content']['introText'];
 
-    foreach ($content as $contentx) {
+    foreach ($content as $key => $contentx) {
         echo '<pre>';
+        echo $key;
         echo '</pre>';
     }
     $blog_array[] = array(
