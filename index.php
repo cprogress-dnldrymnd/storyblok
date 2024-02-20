@@ -61,10 +61,10 @@ function get_contents($contents)
                         $filename =  str_replace(".JPG", ".jpg", $filename);
                         $contents_var .= '<span class="blog-image"><img src="https://ten87.theprogressteam.co.uk/wp-content/uploads/2024/02/' . basename($filename) . '"/></span>';
                     } else if ($ar['type'] == 'list_item') {
-                        foreach ($ar['content'] as $content) {
+                        foreach ($ar['content'] as $content2) {
                             $contents_var .= '<li>';
 
-                            $contents_var .= get_contents($content);
+                            $contents_var .= get_contents($content2);
 
                             $contents_var .= '</li>';
                         }
