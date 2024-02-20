@@ -135,11 +135,9 @@ function get_contents_toplist($contents)
 
 foreach ($stories as $story) {
     $featured_image = $story['content']['coverImage']['filename'];
-    $introText = $story['content']['introText']['content'];
     $blogPostType = $story['content']['blogPostType'][0]['content']['content'];
 
     $toplistEntries = $story['content']['blogPostType'][0]['toplistEntries'];
-    $outroText = $story['content']['outroText']['content'];
 
     $contents_var = '';
 
