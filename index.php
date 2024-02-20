@@ -176,7 +176,6 @@ require_once("../wp-load.php");
 foreach ($blog_array as $blog) {
     // Create post object
 
-    media_sideload_image($blog['featured_image'],);
 
     $my_post = array(
         'post_title'    => wp_strip_all_tags($blog['post_title']),
