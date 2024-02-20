@@ -172,9 +172,9 @@ ___STORIES
 
 <?php
 require_once("../wp-load.php");
-require_once(ABSPATH . 'wp-admin/includes/media.php');
-require_once(ABSPATH . 'wp-admin/includes/file.php');
-require_once(ABSPATH . 'wp-admin/includes/image.php');
+require_once('../wp-admin/includes/media.php');
+require_once('../wp-admin/includes/file.php');
+require_once('../wp-admin/includes/image.php');
 
 foreach ($blog_array as $blog) {
     // Create post object
