@@ -16,13 +16,13 @@ $stories = $data["stories"];
 
 <?php
 $blog_array = array();
-$contents_var = '';
 foreach ($stories as $story) {
     $featured_image = $story['content']['coverImage'];
     $contents = $story['content']['introText'];
     $blogPostType = $story['content']['blogPostType'][0]['content'];
 
-    
+    $contents_var = '';
+
     $contents_var .= '<p>';
     $contents_var .= 'img src="' . $featured_image['filename'] . '"/';
     $contents_var .= '</p>';
