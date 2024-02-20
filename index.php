@@ -180,7 +180,7 @@ foreach ($stories as $story) {
     $toplistEntries = $story['content']['blogPostType'][0]['toplistEntries'];
     $outroText = $story['content']['outroText'];
 
-    $post_category = $story['content']['post_category'];
+    $post_category = $story['content']['postCategory'];
 
 
     $contents_var = '';
