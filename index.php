@@ -63,6 +63,7 @@ function get_contents($contents)
                             $contents_var .= 'keysssss'.$key;
 
                             $contents_var .= get_contents($content2);
+                            $contents_var .= $content2['text'];
 
                             $contents_var .= '</li>';
                         }
