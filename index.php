@@ -31,35 +31,42 @@ function get_contents($contents)
     foreach ($contents as $key => $content) {
         if ($key == 'content') {
             foreach ($content as $con) {
+
+                $arr = $con['content'];
                 if ($con['type'] == 'paragraph') {
-                    $arr = $con['content'];
                     $contents_var .= '<p>';
-                    foreach ($arr as $ar) {
+                } else if ($con['type'] == 'heading') {
+                    $contents_var .= '<h2>';
+                }
+                foreach ($arr as $ar) {
 
-                        if ($ar['marks'][0]['type'] == 'bold') {
-                            $contents_var .= '<strong>';
-                        } else if ($ar['marks'][0]['type']  == 'link') {
-                            $contents_var .= '<a href="' . $ar['marks'][0]['attrs']['href'] . ' " target="' . $ar['marks'][0]['attrs']['target'] . ' ">';
-                        }
-
-
-                        if ($ar['type'] == 'text') {
-                            $contents_var .= $ar['text'];
-                        } else if ($ar['type']  == 'image') {
-                            $filename =  str_replace(".jpeg", ".jpg", $ar['attrs']['src']);
-                            $filename =  str_replace(".JPG", ".jpg", $filename);
-
-                            $contents_var .= '<span class="blog-image"><img src="https://ten87.theprogressteam.co.uk/wp-content/uploads/2024/02/' . basename($filename) . '"/></span>';
-                        }
-
-
-                        if ($ar['marks'][0]['type'] == 'bold') {
-                            $contents_var .= '</strong>';
-                        } else if ($ar['marks'][0]['type']  == 'link') {
-                            $contents_var .= '</a>';
-                        }
+                    if ($ar['marks'][0]['type'] == 'bold') {
+                        $contents_var .= '<strong>';
+                    } else if ($ar['marks'][0]['type']  == 'link') {
+                        $contents_var .= '<a href="' . $ar['marks'][0]['attrs']['href'] . ' " target="' . $ar['marks'][0]['attrs']['target'] . ' ">';
                     }
+
+
+                    if ($ar['type'] == 'text') {
+                        $contents_var .= $ar['text'];
+                    } else if ($ar['type']  == 'image') {
+                        $filename =  str_replace(".jpeg", ".jpg", $ar['attrs']['src']);
+                        $filename =  str_replace(".JPG", ".jpg", $filename);
+
+                        $contents_var .= '<span class="blog-image"><img src="https://ten87.theprogressteam.co.uk/wp-content/uploads/2024/02/' . basename($filename) . '"/></span>';
+                    }
+
+
+                    if ($ar['marks'][0]['type'] == 'bold') {
+                        $contents_var .= '</strong>';
+                    } else if ($ar['marks'][0]['type']  == 'link') {
+                        $contents_var .= '</a>';
+                    }
+                }
+                if ($con['type'] == 'paragraph') {
                     $contents_var .= '</p>';
+                } else if ($con['type'] == 'heading') {
+                    $contents_var .= '</h2>';
                 }
             }
         }
