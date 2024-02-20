@@ -37,6 +37,7 @@ function get_contents($contents)
                     $contents_var .= '<p>';
                 } else if ($con['type'] == 'heading') {
                     $contents_var .= '<h' . $con['attrs']['level'] . '>';
+                } else if ($con['type'] == 'bullet_list') {
                 }
                 foreach ($arr as $ar) {
 
@@ -96,49 +97,8 @@ function get_contents_toplist($contents)
         $contents_var .= '</div>';
     }
 
-
-    foreach ($contents_arr as $key => $content) {
-
-
-        if ($key == 'content') {
-            foreach ($content as $con) {
-                $arr = $con['content'];
-
-                if ($con['type'] == 'paragraph') {
-                    $contents_var .= '<p>';
-                } else if ($con['type'] == 'heading') {
-                    $contents_var .= '<h2>';
-                }
-                foreach ($arr as $ar) {
-
-                    if ($ar['marks'][0]['type'] == 'bold') {
-                        $contents_var .= '<strong>';
-                    } else if ($ar['marks'][0]['type']  == 'link') {
-                        $contents_var .= '<a href="' . $ar['marks'][0]['attrs']['href'] . ' " target="' . $ar['marks'][0]['attrs']['target'] . ' ">';
-                    }
-
-
-                    if ($ar['type'] == 'text') {
-                        $contents_var .= $ar['text'];
-                    } else if ($ar['type']  == 'image') {
-                        $contents_var .= '<span class="blog-image"><img src="' . $ar['attrs']['src'] . '"/></span>';
-                    }
-
-
-                    if ($ar['marks'][0]['type'] == 'bold') {
-                        $contents_var .= '</strong>';
-                    } else if ($ar['marks'][0]['type']  == 'link') {
-                        $contents_var .= '</a>';
-                    }
-                }
-                if ($con['type'] == 'paragraph') {
-                    $contents_var .= '</p>';
-                } else if ($con['type'] == 'heading') {
-                    $contents_var .= '</h2>';
-                }
-            }
-        }
-    }
+    $contents_var .= get_contents($contents_arr);
+   
     if ($spotifyUrl) {
         $contents_var .= '<div class="spotify">';
         $contents_var .= '<a href="' . $spotifyUrl . '" target="_blank"> SPOTIFY </a>';
