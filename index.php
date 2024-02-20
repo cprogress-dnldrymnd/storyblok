@@ -71,7 +71,7 @@ foreach ($stories as $story) {
     $blogPostType = $story['content']['blogPostType'];
 
 
-    $blogPostType = $story['content']['blogPostType'][0]['content'];
+    //$blogPostType = $story['content']['blogPostType'][0]['content'];
 
     $toplistEntries = $story['content']['blogPostType'][0]['toplistEntries'];
     $outroText = $story['content']['outroText'];
