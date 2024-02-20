@@ -68,18 +68,27 @@ function get_contents_toplist($contents)
     $contents_var = '';
 
     $contents_arr = $contents['text'];
-    $headline = $contents['headline'];
-    $subHeadline1 = $contents['subHeadline1'];
-    $spotifyUrl = $contents['spotifyUrl'];
+    $headline = isset($contents['headline']) ? $contents['headline'] : false;
+    $subHeadline1 = isset($contents['subHeadline1']) ? $contents['subHeadline1'] : false;
+    $spotifyUrl = isset($contents['spotifyUrl']) ? $contents['spotifyUrl'] : false;
 
     $contents_var .= '<div class="top-list-item">';
-    $contents_var .= '<h2>';
-    $contents_var .= $headline;
-    $contents_var .= '</h2>';
+    if ($headline) {
+        $contents_var .= '<h2>';
+        $contents_var .= $headline;
+        $contents_var .= '</h2>';
+    }
+    if ($subHeadline1) {
+        $contents_var .= '<div class="subheading">';
+        $contents_var .= $subHeadline1;
+        $contents_var .= '</div>';
+    }
 
-    $contents_var .= '<div class="subheading">';
-    $contents_var .= $subHeadline1;
-    $contents_var .= '</div>';
+    if ($spotifyUrl) {
+        $contents_var .= '<div class="spotify">';
+        $contents_var .= '<a href="' . $spotifyUrl . '" target="_blank"> SPOTIFY </a>';
+        $contents_var .= '</div>';
+    }
     foreach ($contents_arr as $key => $content) {
 
 
