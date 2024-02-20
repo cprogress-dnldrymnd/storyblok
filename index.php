@@ -260,6 +260,7 @@ foreach ($blog_array as $blog) {
 
             echo '<br>';
         }
+        wp_reset_postdata();
     } else {
         echo 'not found for ' . $blog['post_title'];
         echo '<br>';
