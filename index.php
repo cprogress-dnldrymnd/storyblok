@@ -24,12 +24,10 @@ foreach ($stories as $story) {
 
     foreach ($contents as $key => $content) {
         if ($key == 'content') {
-            foreach ($content as $con) {
-                if ($con['type'] == 'paragraph') {
-                    $contents_var .= '<p>';
-                    $contents_var .= $con['text'];
-                    $contents_var .= '</p>';
-                }
+            if ($content['type'] == 'paragraph') {
+                $contents_var .= '<p>';
+                $contents_var .= $content['text'];
+                $contents_var .= '</p>';
             }
         }
     }
