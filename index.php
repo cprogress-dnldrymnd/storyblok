@@ -160,9 +160,9 @@ foreach ($stories as $story) {
     $contents_var .= get_contents($outroText);
 
     $blog_array[] = array(
-        'name' => $story['content']['title'],
-        'date' => $story['published_at'],
-        'content2' => $contents_var,
+        'post_title' => $story['content']['title'],
+        'post_date' => $story['published_at'],
+        'post_content' => $contents_var,
     );
 }
 ?>
@@ -177,8 +177,18 @@ ___STORIES
 <?php
 require_once("../wp-load.php");
 
-foreach($blog_array as $blog) {
+foreach ($blog_array as $blog) {
+    // Create post object
+    $my_post = array(
+        'post_title'    => wp_strip_all_tags($blog['post_title']),
+        'post_content'  => $blog['post_content'],
+        'post_status'   => 'publish',
+        'post_author'   => 1,
+        'post_date' => $blog['post_date'],
+    );
 
+    // Insert the post into the database
+    wp_insert_post($my_post);
 }
 
 ?>
