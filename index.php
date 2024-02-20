@@ -42,6 +42,7 @@ function get_contents($contents)
             }
         }
     }
+    return $contents_var;
 }
 foreach ($stories as $story) {
     $featured_image = $story['content']['coverImage'];
