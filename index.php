@@ -48,7 +48,7 @@ function get_contents($contents, $content_arr = true)
 
                     foreach ($arr as $ar) {
 
-                        $contents_var .= marks_open($con);
+                        $contents_var .= marks_open($ar);
 
 
 
@@ -69,7 +69,7 @@ function get_contents($contents, $content_arr = true)
                         }
 
 
-                        $contents_var .= marks_close($con);
+                        $contents_var .= marks_close($ar);
                     }
                 } else {
 
