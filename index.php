@@ -188,9 +188,12 @@ foreach ($blog_array as $blog) {
     );
 
     // Insert the post into the database
-   $post =  wp_insert_post($my_post);
+    $post_id =  wp_insert_post($my_post);
 
-   media_sideload_image($blog['featured_image'], $post);
+    $image = media_sideload_image($blog['featured_image']);
+
+    // And finally assign featured image to post
+    set_post_thumbnail($post_id, $image);
 }
 
 ?>
