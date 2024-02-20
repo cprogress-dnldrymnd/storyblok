@@ -23,15 +23,20 @@ foreach ($stories as $story) {
     $contents = $story['content']['introText'];
 
     foreach ($contents as $key => $content) {
-    
+
         if ($key == 'content') {
-           // echo '<pre>';
-          //  var_dump($content);
-           // echo '</pre>';
-           echo $content[0]['type'];
+            // echo '<pre>';
+            //  var_dump($content);
+            // echo '</pre>';
             if ($content['type'] == 'paragraph') {
+
+
+                $arr = $content['content'][0]['content'];
+
                 $contents_var .= '<p>';
-                $contents_var .= $content['content']['text'];
+                foreach ($arr as $ar) {
+                    $contents_var .= $ar['text'];
+                }
                 $contents_var .= '</p>';
             }
         }
