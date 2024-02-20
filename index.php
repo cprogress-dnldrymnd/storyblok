@@ -30,8 +30,6 @@ function get_contents($contents)
     $contents_var = '';
     foreach ($contents as $key => $content) {
         if ($key == 'content') {
-            $contents_var .= 'keysssss' . $key;
-
 
             foreach ($content as $con) {
 
@@ -51,7 +49,6 @@ function get_contents($contents)
                         $contents_var .= '<a href="' . $ar['marks'][0]['attrs']['href'] . ' " target="' . $ar['marks'][0]['attrs']['target'] . ' ">';
                     }
 
-                    $contents_var .= 'typesss' . $ar['type'];
 
 
                     if ($ar['type'] == 'text') {
