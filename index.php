@@ -95,9 +95,7 @@ blog_array
 
 <!--
 ___STORIES
-<pre>
-    <?php var_dump($stories); ?>
-</pre>-->
+-->
 
 <?php
 require_once("../wp-load.php");
@@ -105,4 +103,8 @@ require_once("../wp-load.php");
 echo 'ddsdsdsdsds
 <pre>
 <?php var_dump($blog_array); ?>
+</pre>
+
+<pre>
+    <?php var_dump($stories); ?>
 </pre>
