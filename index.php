@@ -1,6 +1,4 @@
-<?php
-require_once("../wp-load.php");
-?>
+
 <style>
     img {
         width: 100px;
