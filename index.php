@@ -68,7 +68,18 @@ function get_contents_toplist($contents)
     $contents_var = '';
 
     $contents_arr = $contents['text'];
+    $headline = $contents['headline'];
+    $subHeadline1 = $contents['subHeadline1'];
+    $spotifyUrl = $contents['spotifyUrl'];
 
+    echo '<div class="top-list-item">';
+    $contents_var .= '<h2>';
+    $contents_var .= $headline;
+    $contents_var .= '</h2>';
+
+    $contents_var .= '<div class="subheading">';
+    $contents_var .= $subHeadline1;
+    $contents_var .= '</div>';
     foreach ($contents_arr as $key => $content) {
 
 
@@ -104,6 +115,7 @@ function get_contents_toplist($contents)
             }
         }
     }
+    echo '</div>';
 
     return $contents_var;
 }
@@ -128,27 +140,8 @@ foreach ($stories as $story) {
 
     if ($toplistEntries) {
         echo '<div class="top-list-item-wrapper">';
-
-        echo '<pre>';
-        var_dump($toplistEntries);
-        echo '</pre>';
-
         foreach ($toplistEntries as $toplistEntry) {
-            $headline = $contents['headline'];
-            $subHeadline1 = $contents['subHeadline1'];
-            $spotifyUrl = $contents['spotifyUrl'];
-
-            echo '<div class="top-list-item">';
-            $contents_var .= '<h2>';
-            $contents_var .= $headline;
-            $contents_var .= '</h2>';
-
-            $contents_var .= '<div class="subheading">';
-            $contents_var .= $subHeadline1;
-            $contents_var .= '</div>';
-            
             $contents_var .= get_contents_toplist($toplistEntry);
-            echo '</div>';
         }
         echo '</div>';
     }
