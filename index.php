@@ -28,65 +28,59 @@ $blog_array = array();
 function get_contents($contents)
 {
     $contents_var = '';
-    foreach ($contents as $key => $content) {
+    foreach ($contents as $con) {
 
-        if ($key == 'content') {
-
-            foreach ($content as $con) {
-
-                $arr = $con['content'];
-                if ($con['type'] == 'paragraph') {
-                    $contents_var .= '<p>';
-                } else if ($con['type'] == 'heading') {
-                    $contents_var .= '<h' . $con['attrs']['level'] . '>';
-                } else if ($con['type'] == 'bullet_list') {
-                    $contents_var .= '<ul>';
-                }
+        $arr = $con['content'];
+        if ($con['type'] == 'paragraph') {
+            $contents_var .= '<p>';
+        } else if ($con['type'] == 'heading') {
+            $contents_var .= '<h' . $con['attrs']['level'] . '>';
+        } else if ($con['type'] == 'bullet_list') {
+            $contents_var .= '<ul>';
+        }
 
 
-                foreach ($arr as $ar) {
+        foreach ($arr as $ar) {
 
-                    if ($ar['marks'][0]['type'] == 'bold') {
-                        $contents_var .= '<strong>';
-                    } else if ($ar['marks'][0]['type']  == 'link') {
-                        $contents_var .= '<a href="' . $ar['marks'][0]['attrs']['href'] . ' " target="' . $ar['marks'][0]['attrs']['target'] . ' ">';
-                    }
+            if ($ar['marks'][0]['type'] == 'bold') {
+                $contents_var .= '<strong>';
+            } else if ($ar['marks'][0]['type']  == 'link') {
+                $contents_var .= '<a href="' . $ar['marks'][0]['attrs']['href'] . ' " target="' . $ar['marks'][0]['attrs']['target'] . ' ">';
+            }
 
 
 
-                    if ($ar['type'] == 'text') {
-                        $contents_var .= $ar['text'];
-                    } else if ($ar['type']  == 'image') {
-                        $filename =  str_replace(".jpeg", ".jpg", $ar['attrs']['src']);
-                        $filename =  str_replace(".JPG", ".jpg", $filename);
-                        $contents_var .= '<span class="blog-image"><img src="https://ten87.theprogressteam.co.uk/wp-content/uploads/2024/02/' . basename($filename) . '"/></span>';
-                    } else if ($ar['type'] == 'list_item') {
-                        foreach ($ar['content'] as $key => $content2) {
-                            $contents_var .= '<li>';
+            if ($ar['type'] == 'text') {
+                $contents_var .= $ar['text'];
+            } else if ($ar['type']  == 'image') {
+                $filename =  str_replace(".jpeg", ".jpg", $ar['attrs']['src']);
+                $filename =  str_replace(".JPG", ".jpg", $filename);
+                $contents_var .= '<span class="blog-image"><img src="https://ten87.theprogressteam.co.uk/wp-content/uploads/2024/02/' . basename($filename) . '"/></span>';
+            } else if ($ar['type'] == 'list_item') {
+                foreach ($ar['content'] as $key => $content2) {
+                    $contents_var .= '<li>';
 
-                            $contents_var .= call_user_func('get_contents', $content2);
+                    $contents_var .= call_user_func('get_contents', $content2);
 
-                            $contents_var .= '</li>';
-                        }
-                    }
-
-
-                    if ($ar['marks'][0]['type'] == 'bold') {
-                        $contents_var .= '</strong>';
-                    } else if ($ar['marks'][0]['type']  == 'link') {
-                        $contents_var .= '</a>';
-                    }
-                }
-
-
-                if ($con['type'] == 'paragraph') {
-                    $contents_var .= '</p>';
-                } else if ($con['type'] == 'heading') {
-                    $contents_var .= '</h' . $con['attrs']['level'] . '>';
-                } else if ($con['type'] == 'bullet_list') {
-                    $contents_var .= '</ul>';
+                    $contents_var .= '</li>';
                 }
             }
+
+
+            if ($ar['marks'][0]['type'] == 'bold') {
+                $contents_var .= '</strong>';
+            } else if ($ar['marks'][0]['type']  == 'link') {
+                $contents_var .= '</a>';
+            }
+        }
+
+
+        if ($con['type'] == 'paragraph') {
+            $contents_var .= '</p>';
+        } else if ($con['type'] == 'heading') {
+            $contents_var .= '</h' . $con['attrs']['level'] . '>';
+        } else if ($con['type'] == 'bullet_list') {
+            $contents_var .= '</ul>';
         }
     }
     return $contents_var;
@@ -141,11 +135,11 @@ function get_contents_toplist($contents)
 
 foreach ($stories as $story) {
     $featured_image = $story['content']['coverImage']['filename'];
-    $introText = $story['content']['introText'];
-    $blogPostType = $story['content']['blogPostType'][0]['content'];
+    $introText = $story['content']['introText']['content'];
+    $blogPostType = $story['content']['blogPostType'][0]['content']['content'];
 
     $toplistEntries = $story['content']['blogPostType'][0]['toplistEntries'];
-    $outroText = $story['content']['outroText'];
+    $outroText = $story['content']['outroText']['content'];
 
     $contents_var = '';
 
