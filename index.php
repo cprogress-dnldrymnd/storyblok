@@ -66,10 +66,12 @@ function loop_content($arr)
 
     foreach ($arr as $ar) {
 
-        if ($ar['marks'][0]['type'] == 'bold') {
-            $contents_var .= '<strong>';
-        } else if ($ar['marks'][0]['type']  == 'link') {
-            $contents_var .= '<a href="' . $ar['marks'][0]['attrs']['href'] . ' " target="' . $ar['marks'][0]['attrs']['target'] . ' ">';
+        if (isset($ar['marks'])) {
+            if ($ar['marks'][0]['type'] == 'bold') {
+                $contents_var .= '<strong>';
+            } else if ($ar['marks'][0]['type']  == 'link') {
+                $contents_var .= '<a href="' . $ar['marks'][0]['attrs']['href'] . ' " target="' . $ar['marks'][0]['attrs']['target'] . ' ">';
+            }
         }
 
 
@@ -90,11 +92,13 @@ function loop_content($arr)
             }
         }
 
+        if (isset($ar['marks'])) {
 
-        if ($ar['marks'][0]['type'] == 'bold') {
-            $contents_var .= '</strong>';
-        } else if ($ar['marks'][0]['type']  == 'link') {
-            $contents_var .= '</a>';
+            if ($ar['marks'][0]['type'] == 'bold') {
+                $contents_var .= '</strong>';
+            } else if ($ar['marks'][0]['type']  == 'link') {
+                $contents_var .= '</a>';
+            }
         }
     }
 
