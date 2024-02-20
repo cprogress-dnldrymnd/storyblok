@@ -82,6 +82,9 @@ foreach ($stories as $story) {
     //$contents_var .= get_contents($blogPostType);
 
     if ($toplistEntries) {
+        echo '<pre>';
+        var_dump($toplistEntries);
+        echo '</pre>';
         $contents_var .= get_contents($toplistEntries);
     }
 
