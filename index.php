@@ -24,6 +24,7 @@ $stories = $data["stories"];
 
 <?php
 $blog_array = array();
+require_once("../wp-load.php");
 
 function get_contents($contents, $content_arr = true)
 {
@@ -229,7 +230,6 @@ ___STORIES
 -->
 
 <?php
-require_once("../wp-load.php");
 
 
 foreach ($blog_array as $blog) {
