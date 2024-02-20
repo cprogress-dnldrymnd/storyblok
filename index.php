@@ -42,6 +42,8 @@ function get_contents($contents, $content_arr = true)
                     $contents_var .= '<h' . $con['attrs']['level'] . '>';
                 } else if ($con['type'] == 'bullet_list') {
                     $contents_var .= '<ul>';
+                } else if ($con['type'] == 'ordered_list') {
+                    $contents_var .= '<ol>';
                 }
 
 
@@ -67,6 +69,8 @@ function get_contents($contents, $content_arr = true)
                     $contents_var .= '</h' . $con['attrs']['level'] . '>';
                 } else if ($con['type'] == 'bullet_list') {
                     $contents_var .= '</ul>';
+                } else if ($con['type'] == 'ordered_list') {
+                    $contents_var .= '</ol>';
                 }
             }
         }
@@ -83,7 +87,6 @@ function content_type($ar)
     } else if ($ar['type']  == 'image') {
         $filename =  str_replace(".jpeg", ".jpg", $ar['attrs']['src']);
         $filename =  str_replace(".JPG", ".jpg", $filename);
-
 
         $contents_var .= '<span class="blog-image"><img src="https://ten87.theprogressteam.co.uk/wp-content/uploads/2024/02/' . basename($filename) . '"/></span>';
     } else if ($ar['type'] == 'list_item') {
@@ -194,11 +197,6 @@ foreach ($stories as $story) {
 
     $contents_var = '';
 
-
-    $contents_var .= '<p>';
-    $contents_var .= '<span class="blog-image"><img src="' . $featured_image . '"/></span>';
-    $contents_var .= '</p>';
-
     $contents_var .= get_contents($introText);
     $contents_var .= get_contents($blogPostType);
 
@@ -264,7 +262,6 @@ foreach ($blog_array as $blog) {
     } else {
         echo 'not found for ' . $blog['post_title'];
         echo '<br>';
-
     }
 
     // Insert the post into the database
