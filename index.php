@@ -16,7 +16,7 @@ $page = $_GET['page'] ? $_GET['page'] : false;
 $client->getStories([
     'page' => $page,
     'per_page' => 20,
-    'starts_with' => 'blog',
+    'starts_with' => 'community',
 ]);
 $data = $client->getBody();
 $stories = $data["stories"];
@@ -243,6 +243,8 @@ foreach ($blog_array as $blog) {
             ),
         ),
     );
+
+    /*
     $query = new WP_Query($args);
     if ($query->have_posts()) {
         while ($query->have_posts()) {
@@ -265,7 +267,7 @@ foreach ($blog_array as $blog) {
         echo 'not found for ' . $blog['post_title'];
         echo '<br>';
     }
-
+*/
     // Insert the post into the database
     // wp_insert_post($my_post);
 }
