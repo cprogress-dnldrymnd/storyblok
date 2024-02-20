@@ -30,7 +30,7 @@ function get_contents($contents)
     $contents_var = '';
     foreach ($contents as $con) {
 
-        $arr = $con['content'];
+        $arr = $con;
         if ($con['type'] == 'paragraph') {
             $contents_var .= '<p>';
         } else if ($con['type'] == 'heading') {
