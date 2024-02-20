@@ -72,7 +72,7 @@ function get_contents_toplist($contents)
     $subHeadline1 = $contents['subHeadline1'];
     $spotifyUrl = $contents['spotifyUrl'];
 
-    echo '<div class="top-list-item">';
+    $contents_var .= '<div class="top-list-item">';
     $contents_var .= '<h2>';
     $contents_var .= $headline;
     $contents_var .= '</h2>';
@@ -115,7 +115,7 @@ function get_contents_toplist($contents)
             }
         }
     }
-    echo '</div>';
+    $contents_var .= '</div>';
 
     return $contents_var;
 }
