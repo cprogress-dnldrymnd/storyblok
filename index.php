@@ -101,3 +101,6 @@ ___STORIES
     <?php var_dump($stories); ?>
 </pre>--?
 
+<?php
+require_once("../wp-load.php");
+?>
