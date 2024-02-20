@@ -180,10 +180,18 @@ function get_contents_toplist($contents)
 }
 
 
+function social($url)
+{
+    return array(
+        'qodef_team_member_icon' => 'font-awesome',
+        'qodef_team_member_icon-font-awesome' => 'fab fa-instagram',
+        'qodef_team_member_icon_link' => $url
+    );
+}
 
 foreach ($stories as $story) {
 
-    $socials = array();
+    $qodef_team_member_social_icons = array();
 
 
     $spotifyUrl = isset($story['content']['spotifyUrl']['url']) ? $story['content']['spotifyUrl']['url'] : false;
@@ -196,12 +204,19 @@ foreach ($stories as $story) {
     $residentAdvisorUrl = isset($story['content']['residentAdvisorUrl']['url']) ? $story['content']['residentAdvisorUrl']['url'] : false;
 
 
+
+    if ($instagramUrl) {
+        $qodef_team_member_social_icons[] = social($instagramUrl);
+    }
+
+
     $blog_array[] = array(
         'post_title' => $story['content']['name'],
         'post_content' => $story['content']['text'],
         'post_image' => $story['content']['image']['filename'],
-        'meta_query' => array(
-            'qodef_team_member_role' => $story['content']['profession']
+        'meta_input' => array(
+            'qodef_team_member_role' => $story['content']['profession'],
+            'qodef_team_member_social_icons' => $qodef_team_member_social_icons,
         )
     );
 }
@@ -217,45 +232,17 @@ foreach ($stories as $story) {
 
 
 foreach ($blog_array as $blog) {
-    // Create post object
 
-    $args = array(
-        'post_type' => 'post',
-        'posts_per_page' => 1,
-        'meta_query' => array(
-            array(
-                'key' => '_post_title',
-                'value' => $blog['post_title']
-            ),
-        ),
+    $my_post = array(
+        'post_content'  => $blog['post_content'],
+        'post_category' => array($blog['post_category']),
+        'meta_input' => $blog['meta_input']
     );
 
-    /*
-    $query = new WP_Query($args);
-    if ($query->have_posts()) {
-        while ($query->have_posts()) {
-            $query->the_post();
-            echo get_the_title();
 
 
-            $my_post = array(
-                'ID'           => get_the_ID(),
-                'post_content'  => $blog['post_content'],
-                'post_category' => array($blog['post_category'])
-            );
-
-            wp_update_post($my_post);
-
-            echo '<br>';
-        }
-        wp_reset_postdata();
-    } else {
-        echo 'not found for ' . $blog['post_title'];
-        echo '<br>';
-    }
-*/
     // Insert the post into the database
-    // wp_insert_post($my_post);
+    wp_insert_post($my_post);
 }
 
 
