@@ -13,7 +13,7 @@ $client = new Client('Z5R6TMf4M0FDuypDqcwQIwtt');
 
 // Get all Stories from the article folder
 $client->getStories([
-    'page' => 20,
+    'page' => 1,
     'per_page' => 1,
     'starts_with' => 'blog',
 ]);
@@ -189,6 +189,7 @@ foreach ($blog_array as $blog) {
 
     // Insert the post into the database
    $post =  wp_insert_post($my_post);
+
    media_sideload_image($blog['featured_image'], $post);
 }
 
