@@ -24,15 +24,21 @@ function get_contents($contents)
         if ($key == 'content') {
             foreach ($content as $con) {
                 if ($con['type'] == 'paragraph') {
-
                     $arr = $con['content'];
-
                     $contents_var .= '<p>';
                     foreach ($arr as $ar) {
+
                         if ($ar['marks'][0]['type'] == 'bold') {
                             $contents_var .= '<strong>';
                         }
-                        $contents_var .= $ar['text'];
+
+
+                        if ($ar['type'] == 'text') {
+                            $contents_var .= $ar['text'];
+                        }
+
+
+
                         if ($ar['marks'][0]['type'] == 'bold') {
                             $contents_var .= '</strong>';
                         }
@@ -44,6 +50,10 @@ function get_contents($contents)
     }
     return $contents_var;
 }
+
+function _return_image()
+{
+}
 foreach ($stories as $story) {
     $featured_image = $story['content']['coverImage'];
     $contents = $story['content']['introText'];
@@ -52,7 +62,7 @@ foreach ($stories as $story) {
     $contents_var = '';
 
     $contents_var .= '<p>';
-    $contents_var .= 'img src="' . $featured_image['filename'] . '"/';
+    $contents_var .= 'IMGOPEN src="' . $featured_image['filename'] . '"IMGCLOSE';
     $contents_var .= '</p>';
 
 
