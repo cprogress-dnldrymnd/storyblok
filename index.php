@@ -183,7 +183,7 @@ function get_contents_toplist($contents)
 function set_image($image_url, $post_id)
 {
     // Add Featured Image to Post
-    $image_name       = get_the_title($post_id);
+    $image_name       = basename($image_url);
     $upload_dir       = wp_upload_dir(); // Set upload folder
     $image_data       = file_get_contents($image_url); // Get image data
     $unique_file_name = wp_unique_filename($upload_dir['path'], $image_name); // Generate unique name
