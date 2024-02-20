@@ -35,6 +35,8 @@ function get_contents($contents)
 
                         if ($ar['type'] == 'text') {
                             $contents_var .= $ar['text'];
+                        } else if ($ar['type']  == 'image') {
+                            $contents_var .= 'IMGOPEN src="' . $ar['attrs']['src'] . '"IMGCLOSE';
                         }
 
 
@@ -51,9 +53,7 @@ function get_contents($contents)
     return $contents_var;
 }
 
-function _return_image()
-{
-}
+
 foreach ($stories as $story) {
     $featured_image = $story['content']['coverImage'];
     $contents = $story['content']['introText'];
