@@ -12,7 +12,6 @@ use Storyblok\Client;
 $client = new Client('Z5R6TMf4M0FDuypDqcwQIwtt');
 
 // Get all Stories from the article folder
-/*
 $page = $_GET['page'] ? $_GET['page'] : false;
 $client->getStories([
     'page' => $page,
@@ -191,7 +190,7 @@ foreach ($blog_array as $blog) {
     );
 
     // Insert the post into the database
-    wp_insert_post($my_post);
+    // wp_insert_post($my_post);
 }
 
 ?>
