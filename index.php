@@ -30,7 +30,7 @@ foreach ($stories as $story) {
             echo '</pre>';
             if ($content['type'] == 'paragraph') {
                 $contents_var .= '<p>';
-                $contents_var .= $content['text'];
+                $contents_var .= $content['content']['text'];
                 $contents_var .= '</p>';
             }
         }
