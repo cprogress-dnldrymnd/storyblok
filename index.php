@@ -234,6 +234,7 @@ foreach ($stories as $story) {
 foreach ($blog_array as $blog) {
 
     $my_post = array(
+        'post_type' => 'team',
         'post_content'  => $blog['post_content'],
         'post_category' => array($blog['post_category']),
         'meta_input' => $blog['meta_input']
