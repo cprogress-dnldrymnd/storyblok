@@ -39,7 +39,7 @@ foreach ($stories as $story) {
         'name' => $story['content']['title'],
         'date' => $story['published_at'],
         'content2' => $contents_var,
-        'content' => $content,
+        'content' => $contents,
     );
 }
 ?>
