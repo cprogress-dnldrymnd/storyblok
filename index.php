@@ -84,11 +84,7 @@ function get_contents_toplist($contents)
         $contents_var .= '</div>';
     }
 
-    if ($spotifyUrl) {
-        $contents_var .= '<div class="spotify">';
-        $contents_var .= '<a href="' . $spotifyUrl . '" target="_blank"> SPOTIFY </a>';
-        $contents_var .= '</div>';
-    }
+    
     foreach ($contents_arr as $key => $content) {
 
 
@@ -123,6 +119,11 @@ function get_contents_toplist($contents)
                 }
             }
         }
+    }
+    if ($spotifyUrl) {
+        $contents_var .= '<div class="spotify">';
+        $contents_var .= '<a href="' . $spotifyUrl . '" target="_blank"> SPOTIFY </a>';
+        $contents_var .= '</div>';
     }
     $contents_var .= '</div>';
 
