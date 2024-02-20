@@ -28,7 +28,7 @@ foreach ($stories as $story) {
             // echo '<pre>';
             //  var_dump($content);
             // echo '</pre>';
-            if ($content['type'] == 'paragraph') {
+            if ($content[0]['type'] == 'paragraph') {
 
 
                 $arr = $content['content'][0]['content'];
