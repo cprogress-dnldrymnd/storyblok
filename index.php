@@ -84,7 +84,7 @@ foreach ($stories as $story) {
     if ($toplistEntries) {
         echo 'has top list';
         foreach ($toplistEntries as $toplistEntry) {
-            $contents_var .= get_contents($toplistEntries);
+            $contents_var .= get_contents($toplistEntry);
         }
     }
 
