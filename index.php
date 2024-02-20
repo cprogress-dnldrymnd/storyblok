@@ -111,7 +111,6 @@ echo 'ddsdsdsdsds
 <?php var_dump($toplistEntries); ?>
 </pre>
 
-<!--
 <pre>
     <?php var_dump($stories); ?>
 </pre>
