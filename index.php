@@ -15,7 +15,7 @@ $client = new Client('Z5R6TMf4M0FDuypDqcwQIwtt');
 $page = $_GET['page'] ? $_GET['page'] : false;
 $client->getStories([
     'page' => $page,
-    'per_page' => 20,
+    'per_page' => 1,
     'starts_with' => 'community',
 ]);
 $data = $client->getBody();
@@ -183,6 +183,17 @@ function get_contents_toplist($contents)
 
 foreach ($stories as $story) {
 
+    $socials = array();
+
+
+    $spotifyUrl = isset($story['content']['spotifyUrl']['url']) ? $story['content']['spotifyUrl']['url'] : false;
+    $bandcampUrl = isset($story['content']['bandcampUrl']['url']) ? $story['content']['bandcampUrl']['url'] : false;
+    $website1Url = isset($story['content']['website1Url']['url']) ? $story['content']['website1Url']['url'] : false;
+    $website2Url = isset($story['content']['website2Url']['url']) ? $story['content']['website2Url']['url'] : false;
+    $website3Url = isset($story['content']['website3Url']['url']) ? $story['content']['website3Url']['url'] : false;
+    $instagramUrl = isset($story['content']['instagramUrl']['url']) ? $story['content']['instagramUrl']['url'] : false;
+    $soundcloudUrl = isset($story['content']['soundcloudUrl']['url']) ? $story['content']['soundcloudUrl']['url'] : false;
+    $residentAdvisorUrl = isset($story['content']['residentAdvisorUrl']['url']) ? $story['content']['residentAdvisorUrl']['url'] : false;
 
 
     $blog_array[] = array(
