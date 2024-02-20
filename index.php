@@ -108,9 +108,10 @@ ___STORIES
 ?>
 echo 'ddsdsdsdsds
 <pre>
-<?php var_dump($blog_array); ?>
+<?php var_dump($toplistEntries); ?>
 </pre>
 
+<!--
 <pre>
     <?php var_dump($stories); ?>
 </pre>
