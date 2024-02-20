@@ -20,7 +20,7 @@ $contents_var = '';
 foreach ($stories as $story) {
     $featured_image = $story['content']['coverImage'];
     $contents = $story['content']['introText'];
-    $blogPostType = $story['content']['blogPostType'];
+    $blogPostType = $story['content']['blogPostType'][0]['content'];
 
     
     $contents_var .= '<p>';
