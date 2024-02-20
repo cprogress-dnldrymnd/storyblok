@@ -87,8 +87,11 @@ foreach ($stories as $story) {
     //$contents_var .= get_contents($blogPostType);
 
     foreach ($blogPostType as $key => $blogPost) {
-       echo $key;
-       echo '<br>';
+        echo $key;
+        foreach ($blogPost as $post) {
+            echo $post['component'];
+        }
+        echo '<br>';
     }
     // $contents_var .= get_contents($outroText);
 
