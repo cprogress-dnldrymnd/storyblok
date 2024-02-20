@@ -29,7 +29,6 @@ function get_contents($contents)
 {
     $contents_var = '';
     foreach ($contents as $key => $content) {
-        $contents_var .= 'keysssss' . $key . ' ';
 
         if ($key == 'content') {
 
@@ -43,6 +42,10 @@ function get_contents($contents)
                 } else if ($con['type'] == 'bullet_list') {
                     $contents_var .= '<ul>';
                 }
+
+
+                $contents_var .= 'keysssss' . $con['type'] . ' ';
+
                 foreach ($arr as $ar) {
 
                     if ($ar['marks'][0]['type'] == 'bold') {
