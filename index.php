@@ -20,7 +20,7 @@ $blog_array = array();
 
 foreach ($stories as $story) {
 
-    $content = $story['content']['introText']['content'];
+    $content = $story['content']['introText'][1];
 
     foreach ($content as $key => $contentx) {
         if ($key == 'content') {
