@@ -263,6 +263,8 @@ foreach ($blog_array as $blog) {
         }
     } else {
         echo 'not found for ' . $blog['post_title'];
+        echo '<br>';
+
     }
 
     // Insert the post into the database
