@@ -15,7 +15,7 @@ $client = new Client('Z5R6TMf4M0FDuypDqcwQIwtt');
 $page = $_GET['page'] ? $_GET['page'] : false;
 $client->getStories([
     'page' => $page,
-    'per_page' => 1,
+    'per_page' => 10,
     'starts_with' => 'community',
 ]);
 $data = $client->getBody();
