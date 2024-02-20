@@ -187,8 +187,9 @@ foreach ($stories as $story) {
     $toplistEntries = $story['content']['blogPostType'][0]['toplistEntries'];
     $outroText = $story['content']['outroText'];
 
-    $post_category = $story['content']['postCategory'];
+    $category = $story['content']['postCategory'];
 
+    $category = get_term_by('name', $category, 'category')->term_id;
 
     $contents_var = '';
 
@@ -240,6 +241,11 @@ foreach ($blog_array as $blog) {
         'post_author'   => 1,
         'post_date' => $blog['post_date'],
     );
+
+
+
+
+
 
     // Insert the post into the database
     // wp_insert_post($my_post);
