@@ -133,7 +133,10 @@ function get_contents_toplist($contents)
     $spotifyUrl = isset($contents['spotifyUrl']) ? $contents['spotifyUrl'] : false;
     $websiteUrl = isset($contents['websiteUrl']) ? $contents['websiteUrl'] : false;
 
+
     $image_player = isset($contents['player'][0]['image']['filename']) ? $contents['player'][0]['image']['filename'] : false;
+
+
 
     $contents_var .= '<div class="top-list-item">';
     if ($headline) {
@@ -150,6 +153,10 @@ function get_contents_toplist($contents)
         $contents_var .= '<div class="subheading2">';
         $contents_var .= $subHeadline2;
         $contents_var .= '</div>';
+    }
+
+    if ($image_player) {
+        $contents_var .= '<span class="blog-image"><img src="' . $image_player . '"/></span>';
     }
     $contents_var .= get_contents($contents_arr);
 
