@@ -44,7 +44,7 @@ function get_contents($contents)
                         if ($ar['type'] == 'text') {
                             $contents_var .= $ar['text'];
                         } else if ($ar['type']  == 'image') {
-                            $contents_var .= '<div class="blog-image"><img src="' . $ar['attrs']['src'] . '"/></div>';
+                            $contents_var .= '<span class="blog-image"><img src="' . $ar['attrs']['src'] . '"/></span>';
                         }
 
 
@@ -71,7 +71,7 @@ foreach ($stories as $story) {
     $contents_var = '';
 
     $contents_var .= '<p>';
-    $contents_var .= '<div class="blog-image"><img src="' . $featured_image['filename'] . '"/></div>';
+    $contents_var .= '<span class="blog-image"><img src="' . $featured_image['filename'] . '"/></span>';
     $contents_var .= '</p>';
 
 
