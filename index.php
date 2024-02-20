@@ -80,7 +80,27 @@ function get_contents($contents, $content_arr = true)
                         }
                     }
                 } else {
-                    $contents_var .= $con['text'];
+
+                    if ($con['marks'][0]['type'] == 'bold') {
+                        $contents_var .= '<strong>';
+                    } else if ($con['marks'][0]['type']  == 'link') {
+                        $contents_var .= '<a href="' . $con['marks'][0]['attrs']['href'] . ' " target="' . $con['marks'][0]['attrs']['target'] . ' ">';
+                    }
+
+
+                    if ($con['type'] == 'text') {
+                        $contents_var .= $con['text'];
+                    } else if ($con['type']  == 'image') {
+                        $filename =  str_replace(".jpeg", ".jpg", $con['attrs']['src']);
+                        $filename =  str_replace(".JPG", ".jpg", $filename);
+                        $contents_var .= '<span class="blog-image"><img src="https://ten87.theprogressteam.co.uk/wp-content/uploads/2024/02/' . basename($filename) . '"/></span>';
+                    }
+
+                    if ($con['marks'][0]['type'] == 'bold') {
+                        $contents_var .= '</strong>';
+                    } else if ($con['marks'][0]['type']  == 'link') {
+                        $contents_var .= '</a>';
+                    }
                 }
 
                 if ($con['type'] == 'paragraph') {
