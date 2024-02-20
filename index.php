@@ -234,34 +234,39 @@ ___STORIES
 
 foreach ($blog_array as $blog) {
     // Create post object
-    $my_post = array(
+    /*$my_post = array(
         'post_title'    => wp_strip_all_tags($blog['post_title']),
         'post_content'  => $blog['post_content'],
         'post_status'   => 'publish',
         'post_author'   => 1,
         'post_date' => $blog['post_date'],
         'post_category' => array($post_category)
+    );*/
+
+    $args = array(
+        'post_type' => 'post',
+        'posts_per_page' => 1,
+        'meta_query' => array(
+            array(
+                'key' => '_post_title',
+                'value' => wp_strip_all_tags($blog['post_title'])
+            ),
+        ),
     );
+    $query = new WP_Query($args);
 
+    while ($query->have_posts()) {
+        $query->the_post();
+        echo get_the_title();
 
+        echo '<br>';
+    }
 
     // Insert the post into the database
     // wp_insert_post($my_post);
 }
 
-$args = array(
-    'post_type' => 'post',
-    'posts_per_page' => -1,
-);
-$query = new WP_Query($args);
 
-while ($query->have_posts()) {
-    $query->the_post();
-    echo get_post_meta(get_the_ID(), '_post_title', true);
-
-
-    echo '<br>';
-}
 ?>
 
 blog_array
