@@ -20,13 +20,15 @@ $blog_array = array();
 
 foreach ($stories as $story) {
 
-    $content = $story['content']['introText'][1];
+    $contents = $story['content']['introText'];
 
-    foreach ($content as $key => $contentx) {
+    foreach ($contents as $key => $content) {
         if ($key == 'content') {
-            echo '<pre>';
-            echo $key;
-            echo '</pre>';
+            foreach($content as $con) {
+                if($con['type'] == 'paragraph') {
+                    
+                }
+            }
         }
     }
     $blog_array[] = array(
