@@ -43,7 +43,6 @@ function get_contents($contents, $content_arr = true)
                     $contents_var .= '<ul>';
                 }
 
-
                 if ($content_arr) {
 
                     foreach ($arr as $ar) {
@@ -66,7 +65,7 @@ function get_contents($contents, $content_arr = true)
                             foreach ($ar['content'] as $key => $content2) {
                                 $contents_var .= '<li>';
 
-                                $contents_var .= call_user_func('get_contents', $content2, false);
+                                $contents_var .= call_user_func('get_contents', $content2, true);
 
                                 $contents_var .= '</li>';
                             }
