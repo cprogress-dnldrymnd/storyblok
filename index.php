@@ -46,7 +46,10 @@ function get_contents($contents)
                         if ($ar['type'] == 'text') {
                             $contents_var .= $ar['text'];
                         } else if ($ar['type']  == 'image') {
-                            $contents_var .= '<span class="blog-image"><img src="https://ten87.theprogressteam.co.uk/wp-content/uploads/2024/02/' . basename($ar['attrs']['src']) . '"/></span>';
+                            $filename =  str_replace(".jpeg", ".jpg", $ar['attrs']['src']);
+                            $filename =  str_replace(".JPG", ".jpg", $ar['attrs']['src']);
+
+                            $contents_var .= '<span class="blog-image"><img src="https://ten87.theprogressteam.co.uk/wp-content/uploads/2024/02/' . basename($filename) . '"/></span>';
                         }
 
 
