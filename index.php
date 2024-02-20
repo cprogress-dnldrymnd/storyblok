@@ -245,9 +245,17 @@ foreach ($blog_array as $blog) {
 
 
 
+    $args = array(
+        'post_type' => 'post',
+        'posts_per_page' => -1,
+    );
+    $query = new WP_Query($args);
 
-
-
+    while ($query->have_posts()) {
+        $query->the_post();
+        echo get_the_title();
+        echo '<br>';
+    }
     // Insert the post into the database
     // wp_insert_post($my_post);
 }
