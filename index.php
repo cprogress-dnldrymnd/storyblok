@@ -45,7 +45,7 @@ function get_contents($contents, $content_arr = true)
                 if($content_arr) {
                     $contents_var .= loop_content($con['content']);
                 } else {
-                    $contents_var .= loop_content($con);
+                    $contents_var .= echo 'xxx';
 
                 }
 
