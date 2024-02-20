@@ -92,7 +92,7 @@ function content_types($ar)
         foreach ($ar['content'] as  $content2) {
             $contents_var .= '<li>';
 
-            $contents_var .= content_types($ar);
+            $contents_var .= content_types($content2);
 
             $contents_var .= '</li>';
         }
