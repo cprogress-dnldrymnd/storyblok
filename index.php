@@ -169,7 +169,7 @@ foreach ($stories as $story) {
 ?>
 
 
-blog_array
+
 
 <!--
 ___STORIES
@@ -195,6 +195,12 @@ foreach ($blog_array as $blog) {
 
 ?>
 
+blog_array
+
+<pre>
+<?php var_dump($blog_array); ?>
+</pre>
+_stories
 <pre>
 <?php var_dump($stories); ?>
 </pre>
