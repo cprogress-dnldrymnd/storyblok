@@ -249,8 +249,7 @@ foreach ($blog_array as $blog) {
         'meta_query' => array(
             array(
                 'key' => '_post_title',
-                'value' => $blog['post_title'],
-                'compare'=> 'LIKE'
+                'value' => $blog['post_title']
             ),
         ),
     );
@@ -261,6 +260,8 @@ foreach ($blog_array as $blog) {
         echo get_the_title();
 
         echo '<br>';
+    } else {
+        echo 'not found for '. $blog['post_title'];
     }
 
     // Insert the post into the database
