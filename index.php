@@ -66,6 +66,9 @@ function get_contents($contents)
 function get_contents_toplist($contents)
 {
     $contents_var = '';
+
+    $contents = $contents['text'];
+
     foreach ($contents as $key => $content) {
         if ($key == 'content') {
             foreach ($content as $con) {
@@ -126,7 +129,7 @@ foreach ($stories as $story) {
         echo '</pre>';
 
         foreach ($toplistEntries as $toplistEntry) {
-            $contents_var .= get_contents($toplistEntry['text']);
+            $contents_var .= get_contents_toplist($toplistEntry);
         }
     }
 
