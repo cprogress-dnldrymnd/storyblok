@@ -42,11 +42,10 @@ function get_contents($contents, $content_arr = true)
                     $contents_var .= '<ul>';
                 }
 
-                if($content_arr) {
+                if ($content_arr) {
                     $contents_var .= loop_content($con['content']);
                 } else {
-                    $contents_var .= echo 'xxx';
-
+                    $contents_var .=  'xxx';
                 }
 
                 if ($con['type'] == 'paragraph') {
