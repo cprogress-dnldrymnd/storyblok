@@ -67,13 +67,13 @@ function get_contents_toplist($contents)
 {
     $contents_var = '';
 
-    $contents = $contents['text'];
+    $contents_arr = $contents['text'];
     $headline = $contents['headline'];
     $subHeadline1 = $contents['subHeadline1'];
     $spotifyUrl = $contents['spotifyUrl'];
 
     echo '<div class="top-list-item-wrapper">';
-    foreach ($contents as $key => $content) {
+    foreach ($contents_arr as $key => $content) {
         echo '<div class="top-list-item">';
         $contents_var .= '<h2>';
         $contents_var .= $headline;
