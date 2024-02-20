@@ -16,7 +16,6 @@ $stories = $data["stories"];
 ?>
 
 <?php
-echo count($stories);
 $blog_array = array();
 
 foreach ($stories as $story) {
@@ -39,5 +38,5 @@ foreach ($stories as $story) {
 ?>
 
 <pre>
-    <?php var_dump($blog_array); ?>
+    <?php var_dump($stories); ?>
 </pre>
