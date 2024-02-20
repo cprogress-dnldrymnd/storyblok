@@ -24,7 +24,7 @@ foreach ($stories as $story) {
 
     
     $contents_var .= '<p>';
-    $contents_var .= '<img src="' . $featured_image['filename'] . '"/>';
+    $contents_var .= 'img src="' . $featured_image['filename'] . '"/';
     $contents_var .= '</p>';
 
 
