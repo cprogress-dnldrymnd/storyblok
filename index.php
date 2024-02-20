@@ -29,7 +29,7 @@ function get_contents($contents)
 {
     $contents_var = '';
     foreach ($contents as $key => $content) {
-        $contents_var .= 'keysssss'.$key . ' ';
+        $contents_var .= 'keysssss' . $key . ' ';
 
         if ($key == 'content') {
 
@@ -63,7 +63,7 @@ function get_contents($contents)
                         foreach ($ar['content'] as $key => $content2) {
                             $contents_var .= '<li>';
 
-                            $contents_var .= get_contents($content2[0]);
+                            $contents_var .= call_user_func('get_contents', $content2);
 
                             $contents_var .= '</li>';
                         }
