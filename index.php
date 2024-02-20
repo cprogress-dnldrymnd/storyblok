@@ -249,7 +249,8 @@ foreach ($blog_array as $blog) {
         'meta_query' => array(
             array(
                 'key' => '_post_title',
-                'value' => $blog['post_title']
+                'value' => $blog['post_title'],
+                'compare'=> 'LIKE'
             ),
         ),
     );
