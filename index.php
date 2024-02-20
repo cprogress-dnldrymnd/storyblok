@@ -68,12 +68,12 @@ foreach ($stories as $story) {
     $introText = $story['content']['introText'];
 
 
-    $blogPostType = $story['content']['blogPostType'];
+    $blogPostType = $story['content']['blogPostType'][0];
 
 
     //$blogPostType = $story['content']['blogPostType'][0]['content'];
 
-    //$toplistEntries = $story['content']['blogPostType'][0]['toplistEntries'];
+    $toplistEntries = $story['content']['blogPostType'][0]['toplistEntries'];
     $outroText = $story['content']['outroText'];
 
     $contents_var = '';
@@ -86,12 +86,11 @@ foreach ($stories as $story) {
     //$contents_var .= get_contents($introText);
     //$contents_var .= get_contents($blogPostType);
 
-    foreach ($blogPostType as $blogPost) {
-        foreach ($blogPost as $key => $blogPost) {
-            echo $key;
-            echo $blogPost['component'];
-            echo '<br>';
+    foreach ($blogPostType as $key => $blogPost) {
+        if(isset($blogPost['blogPost'])) {
+            echo $blogPost['blogPost'];
         }
+        echo '<br>';
     }
     // $contents_var .= get_contents($outroText);
 
