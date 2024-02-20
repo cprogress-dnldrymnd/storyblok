@@ -38,6 +38,7 @@ function get_contents($contents)
                 } else if ($con['type'] == 'heading') {
                     $contents_var .= '<h' . $con['attrs']['level'] . '>';
                 } else if ($con['type'] == 'bullet_list') {
+                    $contents_var .= '<ul>';
                 }
                 foreach ($arr as $ar) {
 
@@ -53,8 +54,9 @@ function get_contents($contents)
                     } else if ($ar['type']  == 'image') {
                         $filename =  str_replace(".jpeg", ".jpg", $ar['attrs']['src']);
                         $filename =  str_replace(".JPG", ".jpg", $filename);
-
                         $contents_var .= '<span class="blog-image"><img src="https://ten87.theprogressteam.co.uk/wp-content/uploads/2024/02/' . basename($filename) . '"/></span>';
+                    } else if ($ar['type'] == 'list_item') {
+                        $contents_var .= '..';
                     }
 
 
@@ -68,6 +70,8 @@ function get_contents($contents)
                     $contents_var .= '</p>';
                 } else if ($con['type'] == 'heading') {
                     $contents_var .= '</h' . $con['attrs']['level'] . '>';
+                } else if ($con['type'] == 'bullet_list') {
+                    $contents_var .= '</ul>';
                 }
             }
         }
@@ -86,7 +90,7 @@ function get_contents_toplist($contents)
     $subHeadline1 = isset($contents['subHeadline1']) ? $contents['subHeadline1'] : false;
     $spotifyUrl = isset($contents['spotifyUrl']) ? $contents['spotifyUrl'] : false;
     $websiteUrl = isset($contents['websiteUrl']) ? $contents['websiteUrl'] : false;
-    
+
     $contents_var .= '<div class="top-list-item">';
     if ($headline) {
         $contents_var .= '<h2>';
@@ -104,7 +108,7 @@ function get_contents_toplist($contents)
         $contents_var .= '</div>';
     }
     $contents_var .= get_contents($contents_arr);
-   
+
     if ($spotifyUrl) {
         $contents_var .= '<div class="spotify-icon">';
         $contents_var .= '<a href="' . $spotifyUrl . '" target="_blank"> SPOTIFY </a>';
