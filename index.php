@@ -226,11 +226,11 @@ function set_image($image_url, $post_id)
     return set_post_thumbnail($post_id, $attach_id);
 }
 
-function social($url)
+function social($url, $class)
 {
     return array(
         'qodef_team_member_icon' => 'font-awesome',
-        'qodef_team_member_icon-font-awesome' => 'fab fa-instagram',
+        'qodef_team_member_icon-font-awesome' => $class,
         'qodef_team_member_icon_link' => $url
     );
 }
@@ -239,20 +239,52 @@ foreach ($stories as $story) {
 
     $qodef_team_member_social_icons = array();
 
-
+    $instagramUrl = isset($story['content']['instagramUrl']['url']) ? $story['content']['instagramUrl']['url'] : false;
     $spotifyUrl = isset($story['content']['spotifyUrl']['url']) ? $story['content']['spotifyUrl']['url'] : false;
     $bandcampUrl = isset($story['content']['bandcampUrl']['url']) ? $story['content']['bandcampUrl']['url'] : false;
     $website1Url = isset($story['content']['website1Url']['url']) ? $story['content']['website1Url']['url'] : false;
     $website2Url = isset($story['content']['website2Url']['url']) ? $story['content']['website2Url']['url'] : false;
     $website3Url = isset($story['content']['website3Url']['url']) ? $story['content']['website3Url']['url'] : false;
-    $instagramUrl = isset($story['content']['instagramUrl']['url']) ? $story['content']['instagramUrl']['url'] : false;
     $soundcloudUrl = isset($story['content']['soundcloudUrl']['url']) ? $story['content']['soundcloudUrl']['url'] : false;
     $residentAdvisorUrl = isset($story['content']['residentAdvisorUrl']['url']) ? $story['content']['residentAdvisorUrl']['url'] : false;
 
 
 
     if ($instagramUrl) {
-        $qodef_team_member_social_icons[] = social($instagramUrl);
+        $qodef_team_member_social_icons[] = social($instagramUrl, 'fab fa-instagram');
+    }
+
+
+    if ($spotifyUrl) {
+        $qodef_team_member_social_icons[] = social($spotifyUrl, 'fab fa-spotify');
+    }
+
+
+    if ($bandcampUrl) {
+        $qodef_team_member_social_icons[] = social($bandcampUrl, 'fab fa-bandcamp');
+    }
+
+    if ($website1Url) {
+        $qodef_team_member_social_icons[] = social($website1Url, 'fa fa-globe-africa');
+    }
+
+
+    if ($website2Url) {
+        $qodef_team_member_social_icons[] = social($website2Url, 'fa fa-globe-africa');
+    }
+
+
+    if ($website3Url) {
+        $qodef_team_member_social_icons[] = social($website3Url, 'fa fa-globe-africa');
+    }
+
+    if ($soundcloudUrl) {
+        $qodef_team_member_social_icons[] = social($soundcloudUrl, 'fab fa-soundcloud');
+    }
+
+
+    if ($residentAdvisorUrl) {
+        $qodef_team_member_social_icons[] = social($residentAdvisorUrl, 'fa fa-ad');
     }
 
 
