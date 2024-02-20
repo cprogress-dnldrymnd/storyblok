@@ -36,8 +36,8 @@ foreach ($stories as $story) {
     $blog_array[] = array(
         'name' => $story['content']['title'],
         'date' => $story['published_at'],
-        'content' => $content,
         'content2' => $contents_var,
+        'content' => $content,
     );
 }
 ?>
