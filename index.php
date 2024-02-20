@@ -1,4 +1,3 @@
-
 <style>
     img {
         width: 100px;
@@ -79,10 +78,10 @@ foreach ($stories as $story) {
     $contents_var .= '</p>';
 
 
-    $contents_var .= get_contents($introText);
-    $contents_var .= get_contents($blogPostType);
+    //$contents_var .= get_contents($introText);
+    //$contents_var .= get_contents($blogPostType);
     $contents_var .= get_contents($toplistEntries);
-    $contents_var .= get_contents($outroText);
+    // $contents_var .= get_contents($outroText);
 
 
 
