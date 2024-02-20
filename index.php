@@ -183,3 +183,6 @@ foreach($blog_array as $blog) {
 
 ?>
 
+<pre>
+<?php var_dump($blog_array); ?>
+</pre>
