@@ -128,6 +128,8 @@ function get_contents_toplist($contents)
     $spotifyUrl = isset($contents['spotifyUrl']) ? $contents['spotifyUrl'] : false;
     $websiteUrl = isset($contents['websiteUrl']) ? $contents['websiteUrl'] : false;
 
+
+
     $contents_var .= '<div class="top-list-item">';
     if ($headline) {
         $contents_var .= '<h2>';
@@ -165,11 +167,16 @@ function get_contents_toplist($contents)
 
 foreach ($stories as $story) {
     $featured_image = $story['content']['coverImage']['filename'];
+
+
     $introText = $story['content']['introText'];
     $blogPostType = $story['content']['blogPostType'][0]['content'];
 
     $toplistEntries = $story['content']['blogPostType'][0]['toplistEntries'];
     $outroText = $story['content']['outroText'];
+
+    $post_category = $story['content']['post_category'];
+
 
     $contents_var = '';
 
@@ -195,6 +202,7 @@ foreach ($stories as $story) {
         'post_title' => $story['content']['title'],
         'post_date' => $story['published_at'],
         'post_content' => $contents_var,
+        'post_category' => $post_category
     );
 }
 ?>
