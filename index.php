@@ -190,7 +190,7 @@ foreach ($stories as $story) {
 
     $category = $story['content']['postCategory'];
 
-    $category = get_term_by('name', $category, 'category')->term_id;
+    $post_category = get_term_by('name', $category, 'category')->term_id;
 
     $contents_var = '';
 
