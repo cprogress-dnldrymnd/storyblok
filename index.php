@@ -232,14 +232,6 @@ ___STORIES
 
 foreach ($blog_array as $blog) {
     // Create post object
-    /*$my_post = array(
-        'post_title'    => wp_strip_all_tags($blog['post_title']),
-        'post_content'  => $blog['post_content'],
-        'post_status'   => 'publish',
-        'post_author'   => 1,
-        'post_date' => $blog['post_date'],
-        'post_category' => array($post_category)
-    );*/
 
     $args = array(
         'post_type' => 'post',
@@ -256,6 +248,15 @@ foreach ($blog_array as $blog) {
         while ($query->have_posts()) {
             $query->the_post();
             echo get_the_title();
+
+
+            $my_post = array(
+                'ID'           => get_the_ID(),
+                'post_content'  => $blog['post_content'],
+                'post_category' => array($blog['post_category'])
+            );
+
+            wp_update_post($my_post);
 
             echo '<br>';
         }
