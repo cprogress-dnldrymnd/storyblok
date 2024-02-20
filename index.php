@@ -194,6 +194,9 @@ foreach ($blog_array as $blog) {
 
     // And finally assign featured image to post
     set_post_thumbnail($post_id, $image);
+
+    echo $image;
+    echo $post_id;
 }
 
 ?>
