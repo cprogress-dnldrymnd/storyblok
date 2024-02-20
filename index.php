@@ -56,7 +56,7 @@ foreach ($stories as $story) {
     }
 
 
-    foreach ($blogPostType[0] as $key => $content) {
+    foreach ($blogPostType as $key => $content) {
         if ($key == 'content') {
             // echo '<pre>';
             //  var_dump($content);
