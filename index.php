@@ -64,13 +64,11 @@ function get_contents($contents, $content_arr = true)
                             $contents_var .= '<span class="blog-image"><img src="https://ten87.theprogressteam.co.uk/wp-content/uploads/2024/02/' . basename($filename) . '"/></span>';
                         } else if ($ar['type'] == 'list_item') {
                             foreach ($ar['content'] as $key => $content2) {
-                                if ($key == 'content') {
-                                    $contents_var .= '<li>';
+                                $contents_var .= '<li>';
 
-                                    $contents_var .= call_user_func('get_contents', $content2, false);
+                                $contents_var .= call_user_func('get_contents', $content2, false);
 
-                                    $contents_var .= '</li>';
-                                }
+                                $contents_var .= '</li>';
                             }
                         }
 
