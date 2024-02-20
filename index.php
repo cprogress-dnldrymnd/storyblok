@@ -249,7 +249,7 @@ foreach ($blog_array as $blog) {
         'meta_query' => array(
             array(
                 'key' => '_post_title',
-                'value' => wp_strip_all_tags($blog['post_title'])
+                'value' => $blog['post_title']
             ),
         ),
     );
