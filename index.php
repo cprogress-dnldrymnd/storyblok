@@ -16,24 +16,12 @@ $stories = $data["stories"];
 
 <?php
 $blog_array = array();
-foreach ($stories as $story) {
-    $featured_image = $story['content']['coverImage'];
-    $contents = $story['content']['introText'];
-    $blogPostType = $story['content']['blogPostType'][0]['content'];
 
+function get_contents($contents)
+{
     $contents_var = '';
-
-    $contents_var .= '<p>';
-    $contents_var .= 'img src="' . $featured_image['filename'] . '"/';
-    $contents_var .= '</p>';
-
-
     foreach ($contents as $key => $content) {
         if ($key == 'content') {
-            // echo '<pre>';
-            //  var_dump($content);
-            // echo '</pre>';
-
             foreach ($content as $con) {
                 if ($con['type'] == 'paragraph') {
 
@@ -54,6 +42,21 @@ foreach ($stories as $story) {
             }
         }
     }
+}
+foreach ($stories as $story) {
+    $featured_image = $story['content']['coverImage'];
+    $contents = $story['content']['introText'];
+    $blogPostType = $story['content']['blogPostType'][0]['content'];
+
+    $contents_var = '';
+
+    $contents_var .= '<p>';
+    $contents_var .= 'img src="' . $featured_image['filename'] . '"/';
+    $contents_var .= '</p>';
+
+
+    $contents_var .= get_contents($contents);
+
 
 
     foreach ($blogPostType as $key => $content) {
