@@ -80,7 +80,10 @@ foreach ($stories as $story) {
 
     //$contents_var .= get_contents($introText);
     //$contents_var .= get_contents($blogPostType);
-    $contents_var .= get_contents($toplistEntries);
+
+    foreach ($toplistEntries as $toplistEntry) {
+        $contents_var .= get_contents($toplistEntry);
+    }
     // $contents_var .= get_contents($outroText);
 
 
