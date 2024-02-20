@@ -28,16 +28,19 @@ foreach ($stories as $story) {
             // echo '<pre>';
             //  var_dump($content);
             // echo '</pre>';
-            if ($content[0]['type'] == 'paragraph') {
 
 
-                $arr = $content['content'][0]['content'];
+            foreach ($content as $con) {
+                if ($content['type'] == 'paragraph') {
 
-                $contents_var .= '<p>';
-                foreach ($arr as $ar) {
-                    $contents_var .= $ar['text'];
+                    $arr = $content['content'];
+
+                    $contents_var .= '<p>';
+                    foreach ($arr as $ar) {
+                        $contents_var .= $ar['text'];
+                    }
+                    $contents_var .= '</p>';
                 }
-                $contents_var .= '</p>';
             }
         }
     }
