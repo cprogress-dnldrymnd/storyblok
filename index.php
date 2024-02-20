@@ -30,7 +30,7 @@ foreach ($stories as $story) {
         }
     }
     $blog_array[] = array(
-        'name' => $story['content']['introText'],
+        'name' => $story['content']['title'],
         'date' => $story['published_at'],
         'content' => $content,
     );
@@ -38,5 +38,5 @@ foreach ($stories as $story) {
 ?>
 
 <pre>
-    <?php var_dump($stories); ?>
+    <?php var_dump($blog_array); ?>
 </pre>
