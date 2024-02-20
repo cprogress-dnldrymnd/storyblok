@@ -185,20 +185,15 @@ foreach ($stories as $story) {
 
     $blog_array[] = array(
         'post_title' => $story['content']['name'],
-        'post_date' => $story['published_at'],
         'post_content' => $contents_var,
-        'post_category' => $post_category,
-        'image_player' => $image_player
     );
 }
 ?>
 
 
-
-
-<!--
-___STORIES
--->
+<pre>
+    <?php var_dump(get_post_meta(5165)) ?>
+</pre>
 
 <?php
 
