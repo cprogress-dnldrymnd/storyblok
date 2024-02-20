@@ -23,6 +23,9 @@ foreach ($stories as $story) {
     $contents = $story['content']['introText'];
 
     foreach ($contents as $key => $content) {
+        echo '<pre>';
+        var_dump($content);
+        echo '</pre>';
         if ($key == 'content') {
             if ($content['type'] == 'paragraph') {
                 $contents_var .= '<p>';
