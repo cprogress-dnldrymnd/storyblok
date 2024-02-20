@@ -107,7 +107,7 @@ foreach ($stories as $story) {
     $introText = $story['content']['introText'];
     $blogPostType = $story['content']['blogPostType'][0]['content'];
 
-    $toplistEntries = $story['content']['blogPostType'][0]['toplistEntries'];
+    $toplistEntries = $story['content']['blogPostType'][0]['toplistEntries'][0];
     $outroText = $story['content']['outroText'];
 
     $contents_var = '';
