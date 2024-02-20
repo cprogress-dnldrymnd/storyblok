@@ -240,6 +240,7 @@ foreach ($blog_array as $blog) {
         'post_status'   => 'publish',
         'post_author'   => 1,
         'post_date' => $blog['post_date'],
+        'post_category' => array($post_category)
     );
 
 
