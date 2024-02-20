@@ -29,7 +29,7 @@ function get_contents($contents)
 {
     $contents_var = '';
     foreach ($contents as $key => $content) {
-        $contents_var .= 'keysssss'.$key;
+        $contents_var .= 'keysssss'.$key . ' ';
 
         if ($key == 'content') {
 
