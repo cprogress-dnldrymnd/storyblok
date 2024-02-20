@@ -176,3 +176,6 @@ ___STORIES
 <?php
 require_once("../wp-load.php");
 ?>
+<pre>
+<?php var_dump($blog_array); ?>
+</pre>
