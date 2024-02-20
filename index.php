@@ -63,6 +63,45 @@ function get_contents($contents)
 }
 
 
+function get_contents_toplist($contents)
+{
+    $contents_var = '';
+    foreach ($contents as $key => $content) {
+        if ($key == 'content') {
+            foreach ($content as $con) {
+                if ($con['type'] == 'paragraph') {
+                    $arr = $con['content'];
+                    $contents_var .= '<p>';
+                    foreach ($arr as $ar) {
+
+                        if ($ar['marks'][0]['type'] == 'bold') {
+                            $contents_var .= '<strong>';
+                        } else if ($ar['marks'][0]['type']  == 'link') {
+                            $contents_var .= '<a href="' . $ar['marks'][0]['attrs']['href'] . ' " target="' . $ar['marks'][0]['attrs']['target'] . ' ">';
+                        }
+
+
+                        if ($ar['type'] == 'text') {
+                            $contents_var .= $ar['text'];
+                        } else if ($ar['type']  == 'image') {
+                            $contents_var .= '<span class="blog-image"><img src="' . $ar['attrs']['src'] . '"/></span>';
+                        }
+
+
+                        if ($ar['marks'][0]['type'] == 'bold') {
+                            $contents_var .= '</strong>';
+                        } else if ($ar['marks'][0]['type']  == 'link') {
+                            $contents_var .= '</a>';
+                        }
+                    }
+                    $contents_var .= '</p>';
+                }
+            }
+        }
+    }
+    return $contents_var;
+}
+
 foreach ($stories as $story) {
     $featured_image = $story['content']['coverImage'];
     $introText = $story['content']['introText'];
@@ -77,14 +116,14 @@ foreach ($stories as $story) {
     $contents_var .= '<span class="blog-image"><img src="' . $featured_image['filename'] . '"/></span>';
     $contents_var .= '</p>';
 
-
+    echo '<pre>';
+    var_dump($blogPostType);
+    echo '</pre>';
     //$contents_var .= get_contents($introText);
     //$contents_var .= get_contents($blogPostType);
 
     if ($toplistEntries) {
-        echo '<pre>';
-        var_dump($toplistEntries);
-        echo '</pre>';
+       
         $contents_var .= get_contents($toplistEntries);
     }
 
