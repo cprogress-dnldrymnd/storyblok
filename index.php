@@ -268,11 +268,9 @@ foreach ($stories as $story) {
         $qodef_team_member_social_icons[] = social($website1Url, 'fa fa-globe-africa');
     }
 
-
     if ($website2Url) {
         $qodef_team_member_social_icons[] = social($website2Url, 'fa fa-globe-africa');
     }
-
 
     if ($website3Url) {
         $qodef_team_member_social_icons[] = social($website3Url, 'fa fa-globe-africa');
@@ -295,6 +293,7 @@ foreach ($stories as $story) {
         'meta_input' => array(
             'qodef_team_member_role' => $story['content']['profession'],
             'qodef_team_member_social_icons' => $qodef_team_member_social_icons,
+            'uuid' =>  $story['uuid']
         )
     );
 }
