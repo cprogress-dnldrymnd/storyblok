@@ -158,8 +158,6 @@ foreach ($stories as $story) {
 
     $contents_var .= get_contents($outroText);
 
-
-
     $blog_array[] = array(
         'name' => $story['content']['title'],
         'date' => $story['published_at'],
