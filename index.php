@@ -154,7 +154,7 @@ foreach ($stories as $story) {
     if ($toplistEntries) {
         $contents_var .= '<div class="top-list-item-wrapper">';
         foreach ($toplistEntries as $toplistEntry) {
-            $contents_var .= get_contents_toplist($toplistEntry);
+            $contents_var .= get_contents_toplist($toplistEntry['content']);
         }
         $contents_var .= '</div>';
     }
