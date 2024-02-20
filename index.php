@@ -142,6 +142,10 @@ foreach ($stories as $story) {
     $contents_var = '';
 
 
+    $contents_var .= '<p>';
+    $contents_var .= '<span class="blog-image"><img src="' . $featured_image . '"/></span>';
+    $contents_var .= '</p>';
+
     $contents_var .= get_contents($introText);
     $contents_var .= get_contents($blogPostType);
 
@@ -159,7 +163,6 @@ foreach ($stories as $story) {
         'post_title' => $story['content']['title'],
         'post_date' => $story['published_at'],
         'post_content' => $contents_var,
-        'featured_image' => $featured_image,
     );
 }
 ?>
@@ -188,15 +191,7 @@ foreach ($blog_array as $blog) {
     );
 
     // Insert the post into the database
-    $post_id =  wp_insert_post($my_post);
-
-    $image = media_sideload_image($blog['featured_image']);
-
-    // And finally assign featured image to post
-    set_post_thumbnail($post_id, $image);
-
-    echo $image;
-    echo $post_id;
+    wp_insert_post($my_post);
 }
 
 ?>
