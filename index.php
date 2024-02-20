@@ -25,7 +25,7 @@ $stories = $data["stories"];
 <?php
 $blog_array = array();
 
-function get_contents($contents, $content_arr = true)
+function get_contents($contents)
 {
     $contents_var = '';
     foreach ($contents as $key => $content) {
@@ -42,11 +42,25 @@ function get_contents($contents, $content_arr = true)
                     $contents_var .= '<ul>';
                 }
 
-                if($content_arr) {
-                    $contents_var .= loop_content($con['content']);
-                } else {
-                    $contents_var .= loop_content($con);
 
+                foreach ($con['content'] as $ar) {
+
+                    if ($ar['marks'][0]['type'] == 'bold') {
+                        $contents_var .= '<strong>';
+                    } else if ($ar['marks'][0]['type']  == 'link') {
+                        $contents_var .= '<a href="' . $ar['marks'][0]['attrs']['href'] . ' " target="' . $ar['marks'][0]['attrs']['target'] . ' ">';
+                    }
+
+
+                    $contents_var .= content_types($ar);
+
+
+
+                    if ($ar['marks'][0]['type'] == 'bold') {
+                        $contents_var .= '</strong>';
+                    } else if ($ar['marks'][0]['type']  == 'link') {
+                        $contents_var .= '</a>';
+                    }
                 }
 
                 if ($con['type'] == 'paragraph') {
@@ -63,45 +77,26 @@ function get_contents($contents, $content_arr = true)
 }
 
 
-function loop_content($arr)
+function content_types($ar)
 {
 
     $contents_var = '';
 
-    foreach ($arr as $ar) {
+    if ($ar['type'] == 'text') {
+        $contents_var .= $ar['text'];
+    } else if ($ar['type']  == 'image') {
+        $filename =  str_replace(".jpeg", ".jpg", $ar['attrs']['src']);
+        $filename =  str_replace(".JPG", ".jpg", $filename);
+        $contents_var .= '<span class="blog-image"><img src="https://ten87.theprogressteam.co.uk/wp-content/uploads/2024/02/' . basename($filename) . '"/></span>';
+    } else if ($ar['type'] == 'list_item') {
+        foreach ($ar['content'] as  $content2) {
+            $contents_var .= '<li>';
 
-        if ($ar['marks'][0]['type'] == 'bold') {
-            $contents_var .= '<strong>';
-        } else if ($ar['marks'][0]['type']  == 'link') {
-            $contents_var .= '<a href="' . $ar['marks'][0]['attrs']['href'] . ' " target="' . $ar['marks'][0]['attrs']['target'] . ' ">';
-        }
+            $contents_var .= content_types($ar);
 
-
-
-        if ($ar['type'] == 'text') {
-            $contents_var .= $ar['text'];
-        } else if ($ar['type']  == 'image') {
-            $filename =  str_replace(".jpeg", ".jpg", $ar['attrs']['src']);
-            $filename =  str_replace(".JPG", ".jpg", $filename);
-            $contents_var .= '<span class="blog-image"><img src="https://ten87.theprogressteam.co.uk/wp-content/uploads/2024/02/' . basename($filename) . '"/></span>';
-        } else if ($ar['type'] == 'list_item') {
-            foreach ($ar['content'] as  $content2) {
-                $contents_var .= '<li>';
-
-                $contents_var .= get_contents($content2, false);
-
-                $contents_var .= '</li>';
-            }
-        }
-
-
-        if ($ar['marks'][0]['type'] == 'bold') {
-            $contents_var .= '</strong>';
-        } else if ($ar['marks'][0]['type']  == 'link') {
-            $contents_var .= '</a>';
+            $contents_var .= '</li>';
         }
     }
-
     return $contents_var;
 }
 
