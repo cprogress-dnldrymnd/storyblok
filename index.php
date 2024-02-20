@@ -245,23 +245,23 @@ foreach ($blog_array as $blog) {
 
 
 
-    $args = array(
-        'post_type' => 'post',
-        'posts_per_page' => -1,
-    );
-    $query = new WP_Query($args);
-
-    while ($query->have_posts()) {
-        $query->the_post();
-        echo get_post_meta(get_the_ID(), '_post_title', true);
-
-
-        echo '<br>';
-    }
     // Insert the post into the database
     // wp_insert_post($my_post);
 }
 
+$args = array(
+    'post_type' => 'post',
+    'posts_per_page' => -1,
+);
+$query = new WP_Query($args);
+
+while ($query->have_posts()) {
+    $query->the_post();
+    echo get_post_meta(get_the_ID(), '_post_title', true);
+
+
+    echo '<br>';
+}
 ?>
 
 blog_array
