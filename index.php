@@ -29,6 +29,8 @@ function get_contents($contents)
 {
     $contents_var = '';
     foreach ($contents as $key => $content) {
+        $contents_var .= 'keysssss'.$key;
+
         if ($key == 'content') {
 
             foreach ($content as $con) {
@@ -60,10 +62,8 @@ function get_contents($contents)
                     } else if ($ar['type'] == 'list_item') {
                         foreach ($ar['content'] as $key => $content2) {
                             $contents_var .= '<li>';
-                            $contents_var .= 'keysssss'.$key;
 
                             $contents_var .= get_contents($content2);
-                            $contents_var .= $content2['text'];
 
                             $contents_var .= '</li>';
                         }
