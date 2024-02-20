@@ -76,7 +76,6 @@ function get_contents_toplist($contents)
     $contents_var .= $headline;
     $contents_var .= '</h2>';
     foreach ($contents_arr as $key => $content) {
-        echo '<div class="top-list-item">';
 
 
         if ($key == 'content') {
@@ -110,7 +109,6 @@ function get_contents_toplist($contents)
                 }
             }
         }
-        echo '</div>';
     }
 
     return $contents_var;
@@ -142,7 +140,12 @@ foreach ($stories as $story) {
         echo '</pre>';
 
         foreach ($toplistEntries as $toplistEntry) {
+            echo '<div class="top-list-item">';
+            $contents_var .= '<h2>';
+            $contents_var .= $headline;
+            $contents_var .= '</h2>';
             $contents_var .= get_contents_toplist($toplistEntry);
+            echo '</div>';
         }
         echo '</div>';
     }
