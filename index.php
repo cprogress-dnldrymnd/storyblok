@@ -89,6 +89,7 @@ foreach ($stories as $story) {
     foreach ($blogPostType as $blogPost) {
         foreach ($blogPost as $key => $blogPost) {
             echo $key;
+            echo $blogPost['component'];
             echo '<br>';
         }
     }
