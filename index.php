@@ -66,8 +66,11 @@ function get_contents($contents)
 
 foreach ($stories as $story) {
     $featured_image = $story['content']['coverImage'];
-    $contents = $story['content']['introText'];
+    $introText = $story['content']['introText'];
     $blogPostType = $story['content']['blogPostType'][0]['content'];
+
+    $toplistEntries = $story['content']['blogPostType'][0]['toplistEntries'];
+    $outroText = $story['content']['outroText'];
 
     $contents_var = '';
 
@@ -76,8 +79,10 @@ foreach ($stories as $story) {
     $contents_var .= '</p>';
 
 
-    $contents_var .= get_contents($contents);
+    $contents_var .= get_contents($introText);
     $contents_var .= get_contents($blogPostType);
+    $contents_var .= get_contents($toplistEntries);
+    $contents_var .= get_contents($outroText);
 
 
 
@@ -85,7 +90,6 @@ foreach ($stories as $story) {
         'name' => $story['content']['title'],
         'date' => $story['published_at'],
         'content2' => $contents_var,
-        'content' => $contents,
     );
 }
 ?>
@@ -98,7 +102,7 @@ ___STORIES
 -->
 
 <?php
-require_once("../wp-load.php");
+//require_once("../wp-load.php");
 ?>
 echo 'ddsdsdsdsds
 <pre>
