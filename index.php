@@ -59,7 +59,7 @@ function get_contents($contents)
                         foreach ($ar['content'] as $content) {
                             $contents_var .= '<li>';
 
-                            $contents_var .= var_dump($content);
+                            $contents_var .= get_contents($content);
 
                             $contents_var .= '</li>';
                         }
