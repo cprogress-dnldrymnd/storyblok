@@ -51,6 +51,8 @@ function get_contents($contents)
                         $contents_var .= '<a href="' . $ar['marks'][0]['attrs']['href'] . ' " target="' . $ar['marks'][0]['attrs']['target'] . ' ">';
                     }
 
+                    $contents_var .= 'typesss' . $ar['type'];
+
 
                     if ($ar['type'] == 'text') {
                         $contents_var .= $ar['text'];
@@ -63,7 +65,6 @@ function get_contents($contents)
                             $contents_var .= '<li>';
 
                             $contents_var .= get_contents($content);
-
 
                             $contents_var .= '</li>';
                         }
