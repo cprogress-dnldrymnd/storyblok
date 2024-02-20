@@ -88,6 +88,8 @@ foreach ($stories as $story) {
     );
 }
 ?>
+
+<!--
 blog_array
 <pre>
     <?php var_dump($blog_array); ?>
@@ -96,4 +98,8 @@ blog_array
 ___STORIES
 <pre>
     <?php var_dump($stories); ?>
-</pre>
+</pre>--?
+
+<?php
+require_once("../wp-load.php");
+?>
