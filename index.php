@@ -95,32 +95,39 @@ function get_contents_toplist($contents)
 
         if ($key == 'content') {
             foreach ($content as $con) {
+                $arr = $con['content'];
+
                 if ($con['type'] == 'paragraph') {
-                    $arr = $con['content'];
                     $contents_var .= '<p>';
-                    foreach ($arr as $ar) {
+                } else if ($con['type'] == 'heading') {
+                    $contents_var .= '<h2>';
+                }
+                foreach ($arr as $ar) {
 
-                        if ($ar['marks'][0]['type'] == 'bold') {
-                            $contents_var .= '<strong>';
-                        } else if ($ar['marks'][0]['type']  == 'link') {
-                            $contents_var .= '<a href="' . $ar['marks'][0]['attrs']['href'] . ' " target="' . $ar['marks'][0]['attrs']['target'] . ' ">';
-                        }
-
-
-                        if ($ar['type'] == 'text') {
-                            $contents_var .= $ar['text'];
-                        } else if ($ar['type']  == 'image') {
-                            $contents_var .= '<span class="blog-image"><img src="' . $ar['attrs']['src'] . '"/></span>';
-                        }
-
-
-                        if ($ar['marks'][0]['type'] == 'bold') {
-                            $contents_var .= '</strong>';
-                        } else if ($ar['marks'][0]['type']  == 'link') {
-                            $contents_var .= '</a>';
-                        }
+                    if ($ar['marks'][0]['type'] == 'bold') {
+                        $contents_var .= '<strong>';
+                    } else if ($ar['marks'][0]['type']  == 'link') {
+                        $contents_var .= '<a href="' . $ar['marks'][0]['attrs']['href'] . ' " target="' . $ar['marks'][0]['attrs']['target'] . ' ">';
                     }
+
+
+                    if ($ar['type'] == 'text') {
+                        $contents_var .= $ar['text'];
+                    } else if ($ar['type']  == 'image') {
+                        $contents_var .= '<span class="blog-image"><img src="' . $ar['attrs']['src'] . '"/></span>';
+                    }
+
+
+                    if ($ar['marks'][0]['type'] == 'bold') {
+                        $contents_var .= '</strong>';
+                    } else if ($ar['marks'][0]['type']  == 'link') {
+                        $contents_var .= '</a>';
+                    }
+                }
+                if ($con['type'] == 'paragraph') {
                     $contents_var .= '</p>';
+                } else if ($con['type'] == 'heading') {
+                    $contents_var .= '</h2>';
                 }
             }
         }
@@ -134,6 +141,8 @@ function get_contents_toplist($contents)
 
     return $contents_var;
 }
+
+
 
 foreach ($stories as $story) {
     $featured_image = $story['content']['coverImage']['filename'];
@@ -201,7 +210,7 @@ foreach ($blog_array as $blog) {
 blog_array
 
 <pre>
-<?php //var_dump($blog_array); ?>
+<?php var_dump($blog_array); ?>
 </pre>
 _stories
 <pre>
