@@ -65,7 +65,7 @@ foreach ($stories as $story) {
 ?>
 blog_array
 <pre>
-    <?php htmlspecialchars(var_dump($blog_array)); ?>
+    <?php var_dump($blog_array); ?>
 </pre>
 
 ___STORIES
