@@ -57,7 +57,10 @@ function get_contents($contents)
                         $contents_var .= '<span class="blog-image"><img src="https://ten87.theprogressteam.co.uk/wp-content/uploads/2024/02/' . basename($filename) . '"/></span>';
                     } else if ($ar['type'] == 'list_item') {
                         foreach ($ar['content'] as $content) {
-                            $contents_var .= '<li>ss';
+                            $contents_var .= '<li>';
+
+                            $contents_var .= get_contents($content);
+
                             $contents_var .= '</li>';
                         }
                     }
