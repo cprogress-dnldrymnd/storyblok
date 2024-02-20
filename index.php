@@ -253,7 +253,10 @@ foreach ($blog_array as $blog) {
 
     while ($query->have_posts()) {
         $query->the_post();
-        echo get_the_title();
+        echo get_post_meta(get_the_ID(), '_post_title', true);
+        add_post_meta(get_the_ID(), '_post_title', get_the_title());
+
+
         echo '<br>';
     }
     // Insert the post into the database
