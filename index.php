@@ -42,8 +42,12 @@ function get_contents($contents, $content_arr = true)
                     $contents_var .= '<ul>';
                 }
 
+                if($content_arr) {
+                    $contents_var .= loop_content($con['content']);
 
-                $contents_var .= loop_content($con['content']);
+                } else {
+
+                }
 
                 if ($con['type'] == 'paragraph') {
                     $contents_var .= '</p>';
@@ -84,7 +88,7 @@ function loop_content($arr)
             foreach ($ar['content'] as  $content2) {
                 $contents_var .= '<li>';
 
-                $contents_var .= 'loops';
+                $contents_var .= get_contents($content2, true);
 
                 $contents_var .= '</li>';
             }
