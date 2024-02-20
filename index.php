@@ -107,7 +107,7 @@ foreach ($stories as $story) {
     $introText = $story['content']['introText'];
     $blogPostType = $story['content']['blogPostType'][0]['content'];
 
-    $toplistEntries = $story['content']['blogPostType'][0]['toplistEntries'][0]['text'];
+    $toplistEntries = $story['content']['blogPostType'][0]['toplistEntries'];
     $outroText = $story['content']['outroText'];
 
     $contents_var = '';
@@ -124,7 +124,10 @@ foreach ($stories as $story) {
         echo '<pre>';
         var_dump($toplistEntries);
         echo '</pre>';
-        $contents_var .= get_contents($toplistEntries);
+
+        foreach ($toplistEntries as $toplistEntry) {
+            $contents_var .= get_contents($toplistEntry['text']);
+        }
     }
 
     // $contents_var .= get_contents($outroText);
