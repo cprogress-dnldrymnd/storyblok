@@ -1,3 +1,8 @@
+<style>
+    img {
+        width: 100px;
+    }
+</style>
 <?php
 // Require composer autoload
 require 'vendor/autoload.php';
@@ -8,6 +13,7 @@ $client = new Client('Z5R6TMf4M0FDuypDqcwQIwtt');
 
 // Get all Stories from the article folder
 $client->getStories([
+    'page' => 1,
     'starts_with' => 'blog',
 ]);
 $data = $client->getBody();
@@ -38,7 +44,6 @@ function get_contents($contents)
                         } else if ($ar['type']  == 'image') {
                             $contents_var .= 'IMGOPEN src="' . $ar['attrs']['src'] . '"IMGCLOSE';
                         }
-
 
 
                         if ($ar['marks'][0]['type'] == 'bold') {
