@@ -84,7 +84,7 @@ function get_contents_toplist($contents)
         $contents_var .= '</div>';
     }
 
-    
+
     foreach ($contents_arr as $key => $content) {
 
 
@@ -145,8 +145,8 @@ foreach ($stories as $story) {
     $contents_var .= '</p>';
 
 
-    //$contents_var .= get_contents($introText);
-    //$contents_var .= get_contents($blogPostType);
+    $contents_var .= get_contents($introText);
+    $contents_var .= get_contents($blogPostType);
 
     if ($toplistEntries) {
         $contents_var .= '<div class="top-list-item-wrapper">';
@@ -156,7 +156,7 @@ foreach ($stories as $story) {
         $contents_var .= '</div>';
     }
 
-    // $contents_var .= get_contents($outroText);
+    $contents_var .= get_contents($outroText);
 
 
 
