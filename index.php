@@ -72,12 +72,12 @@ function get_contents_toplist($contents)
     $subHeadline1 = $contents['subHeadline1'];
     $spotifyUrl = $contents['spotifyUrl'];
 
-    echo '<div class="top-list-item-wrapper">';
+    $contents_var .= '<h2>';
+    $contents_var .= $headline;
+    $contents_var .= '</h2>';
     foreach ($contents_arr as $key => $content) {
         echo '<div class="top-list-item">';
-        $contents_var .= '<h2>';
-        $contents_var .= $headline;
-        $contents_var .= '</h2>';
+
 
         if ($key == 'content') {
             foreach ($content as $con) {
@@ -112,7 +112,6 @@ function get_contents_toplist($contents)
         }
         echo '</div>';
     }
-    echo '</div>';
 
     return $contents_var;
 }
@@ -136,6 +135,8 @@ foreach ($stories as $story) {
     //$contents_var .= get_contents($blogPostType);
 
     if ($toplistEntries) {
+        echo '<div class="top-list-item-wrapper">';
+
         echo '<pre>';
         var_dump($toplistEntries);
         echo '</pre>';
@@ -143,6 +144,7 @@ foreach ($stories as $story) {
         foreach ($toplistEntries as $toplistEntry) {
             $contents_var .= get_contents_toplist($toplistEntry);
         }
+        echo '</div>';
     }
 
     // $contents_var .= get_contents($outroText);
