@@ -139,11 +139,11 @@ foreach ($stories as $story) {
     //$contents_var .= get_contents($blogPostType);
 
     if ($toplistEntries) {
-        echo '<div class="top-list-item-wrapper">';
+        $contents_var .= '<div class="top-list-item-wrapper">';
         foreach ($toplistEntries as $toplistEntry) {
             $contents_var .= get_contents_toplist($toplistEntry);
         }
-        echo '</div>';
+        $contents_var .= '</div>';
     }
 
     // $contents_var .= get_contents($outroText);
