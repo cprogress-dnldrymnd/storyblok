@@ -87,7 +87,7 @@ foreach ($stories as $story) {
     //$contents_var .= get_contents($blogPostType);
 
     foreach ($blogPostType as $blogPost) {
-        foreach ($blogPostType as $key => $blogPost) {
+        foreach ($blogPost as $key => $blogPost) {
             echo $key;
             echo '<br>';
         }
