@@ -201,7 +201,7 @@ foreach ($blog_array as $blog) {
 blog_array
 
 <pre>
-<?php var_dump($blog_array); ?>
+<?php //var_dump($blog_array); ?>
 </pre>
 _stories
 <pre>
