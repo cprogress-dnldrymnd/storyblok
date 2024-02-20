@@ -68,8 +68,17 @@ function get_contents_toplist($contents)
     $contents_var = '';
 
     $contents = $contents['text'];
+    $headline = $contents['headline'];
+    $subHeadline1 = $contents['subHeadline1'];
+    $spotifyUrl = $contents['spotifyUrl'];
 
+    echo '<div class="top-list-item-wrapper">';
     foreach ($contents as $key => $content) {
+        echo '<div class="top-list-item">';
+        $contents_var .= '<h2>';
+        $contents_var .= $headline;
+        $contents_var .= '</h2>';
+
         if ($key == 'content') {
             foreach ($content as $con) {
                 if ($con['type'] == 'paragraph') {
@@ -101,7 +110,10 @@ function get_contents_toplist($contents)
                 }
             }
         }
+        echo '</div>';
     }
+    echo '</div>';
+
     return $contents_var;
 }
 
