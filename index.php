@@ -37,7 +37,13 @@ foreach ($stories as $story) {
 
                     $contents_var .= '<p>';
                     foreach ($arr as $ar) {
+                        if ($con['marks'][0]['type'] == 'bold') {
+                            $contents_var .= '<strong>';
+                        }
                         $contents_var .= $ar['text'];
+                        if ($con['marks'][0]['type'] == 'bold') {
+                            $contents_var .= '</strong>';
+                        }
                     }
                     $contents_var .= '</p>';
                 }
