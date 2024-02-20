@@ -82,6 +82,8 @@ function content_type($ar)
     } else if ($ar['type']  == 'image') {
         $filename =  str_replace(".jpeg", ".jpg", $ar['attrs']['src']);
         $filename =  str_replace(".JPG", ".jpg", $filename);
+
+
         $contents_var .= '<span class="blog-image"><img src="https://ten87.theprogressteam.co.uk/wp-content/uploads/2024/02/' . basename($filename) . '"/></span>';
     } else if ($ar['type'] == 'list_item') {
         foreach ($ar['content'] as $key => $content2) {
@@ -131,7 +133,7 @@ function get_contents_toplist($contents)
     $spotifyUrl = isset($contents['spotifyUrl']) ? $contents['spotifyUrl'] : false;
     $websiteUrl = isset($contents['websiteUrl']) ? $contents['websiteUrl'] : false;
 
-
+    $image_player = isset($contents['player'][0]['image']['filename']) ? $contents['player'][0]['image']['filename'] : false;
 
     $contents_var .= '<div class="top-list-item">';
     if ($headline) {
@@ -205,7 +207,8 @@ foreach ($stories as $story) {
         'post_title' => $story['content']['title'],
         'post_date' => $story['published_at'],
         'post_content' => $contents_var,
-        'post_category' => $post_category
+        'post_category' => $post_category,
+        'image_player' => $image_player
     );
 }
 ?>
