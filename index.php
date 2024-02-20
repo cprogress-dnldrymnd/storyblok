@@ -254,14 +254,15 @@ foreach ($blog_array as $blog) {
         ),
     );
     $query = new WP_Query($args);
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();
+            echo get_the_title();
 
-    while ($query->have_posts()) {
-        $query->the_post();
-        echo get_the_title();
-
-        echo '<br>';
+            echo '<br>';
+        }
     } else {
-        echo 'not found for '. $blog['post_title'];
+        echo 'not found for ' . $blog['post_title'];
     }
 
     // Insert the post into the database
