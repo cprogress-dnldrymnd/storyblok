@@ -47,42 +47,15 @@ function get_contents($contents, $content_arr = true)
                 if ($content_arr) {
 
                     foreach ($arr as $ar) {
-
                         $contents_var .= marks_open($ar);
-
-
-
-                        if ($ar['type'] == 'text') {
-                            $contents_var .= $ar['text'];
-                        } else if ($ar['type']  == 'image') {
-                            $filename =  str_replace(".jpeg", ".jpg", $ar['attrs']['src']);
-                            $filename =  str_replace(".JPG", ".jpg", $filename);
-                            $contents_var .= '<span class="blog-image"><img src="https://ten87.theprogressteam.co.uk/wp-content/uploads/2024/02/' . basename($filename) . '"/></span>';
-                        } else if ($ar['type'] == 'list_item') {
-                            foreach ($ar['content'] as $key => $content2) {
-                                $contents_var .= '<li>';
-
-                                $contents_var .= call_user_func('get_contents', $content2, false);
-
-                                $contents_var .= '</li>';
-                            }
-                        }
-
-
+                        $contents_var .= content_type($ar);
                         $contents_var .= marks_close($ar);
                     }
                 } else {
 
                     $contents_var .= marks_open($con);
 
-
-                    if ($con['type'] == 'text') {
-                        $contents_var .= $con['text'];
-                    } else if ($con['type']  == 'image') {
-                        $filename =  str_replace(".jpeg", ".jpg", $con['attrs']['src']);
-                        $filename =  str_replace(".JPG", ".jpg", $filename);
-                        $contents_var .= '<span class="blog-image"><img src="https://ten87.theprogressteam.co.uk/wp-content/uploads/2024/02/' . basename($filename) . '"/></span>';
-                    }
+                    $contents_var .= content_type($con);
 
                     $contents_var .= marks_close($con);
                 }
@@ -100,7 +73,28 @@ function get_contents($contents, $content_arr = true)
     return $contents_var;
 }
 
+function content_type($ar)
+{
+    $contents_var = '';
 
+    if ($ar['type'] == 'text') {
+        $contents_var .= $ar['text'];
+    } else if ($ar['type']  == 'image') {
+        $filename =  str_replace(".jpeg", ".jpg", $ar['attrs']['src']);
+        $filename =  str_replace(".JPG", ".jpg", $filename);
+        $contents_var .= '<span class="blog-image"><img src="https://ten87.theprogressteam.co.uk/wp-content/uploads/2024/02/' . basename($filename) . '"/></span>';
+    } else if ($ar['type'] == 'list_item') {
+        foreach ($ar['content'] as $key => $content2) {
+            $contents_var .= '<li>';
+
+            $contents_var .= call_user_func('get_contents', $content2, false);
+
+            $contents_var .= '</li>';
+        }
+    }
+
+    return $contents_var;
+}
 
 function marks_open($con)
 {
