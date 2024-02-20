@@ -17,16 +17,18 @@ $stories = $data["stories"];
 
 <?php
 $blog_array = array();
-
+$contents_var = '';
 foreach ($stories as $story) {
 
     $contents = $story['content']['introText'];
 
     foreach ($contents as $key => $content) {
         if ($key == 'content') {
-            foreach($content as $con) {
-                if($con['type'] == 'paragraph') {
-                    
+            foreach ($content as $con) {
+                if ($con['type'] == 'paragraph') {
+                    $contents_var .= '<p>';
+                    $contents_var .= $con['text'];
+                    $contents_var .= '</p>';
                 }
             }
         }
@@ -35,6 +37,7 @@ foreach ($stories as $story) {
         'name' => $story['content']['title'],
         'date' => $story['published_at'],
         'content' => $content,
+        'content2' => $contents_var,
     );
 }
 ?>
