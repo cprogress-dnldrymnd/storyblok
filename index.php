@@ -18,8 +18,14 @@ $stories = $data["stories"];
 $blog_array = array();
 $contents_var = '';
 foreach ($stories as $story) {
-
+    $featured_image = $story['content']['coverImage'];
     $contents = $story['content']['introText'];
+
+
+    $contents_var .= '<p>';
+    $contents_var .= '<img src="' . $featured_image['filename'] . '"/>';
+    $contents_var .= '</p>';
+
 
     foreach ($contents as $key => $content) {
 
