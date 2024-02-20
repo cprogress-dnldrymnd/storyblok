@@ -31,9 +31,9 @@ foreach ($stories as $story) {
 
 
             foreach ($content as $con) {
-                if ($content['type'] == 'paragraph') {
+                if ($con['type'] == 'paragraph') {
 
-                    $arr = $content['content'];
+                    $arr = $con['content'];
 
                     $contents_var .= '<p>';
                     foreach ($arr as $ar) {
