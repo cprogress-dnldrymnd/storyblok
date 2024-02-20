@@ -20,20 +20,19 @@ $contents_var = '';
 foreach ($stories as $story) {
     $featured_image = $story['content']['coverImage'];
     $contents = $story['content']['introText'];
+    $blogPostType = $story['content']['blogPostType'];
 
-
+    
     $contents_var .= '<p>';
     $contents_var .= '<img src="' . $featured_image['filename'] . '"/>';
     $contents_var .= '</p>';
 
 
     foreach ($contents as $key => $content) {
-
         if ($key == 'content') {
             // echo '<pre>';
             //  var_dump($content);
             // echo '</pre>';
-
 
             foreach ($content as $con) {
                 if ($con['type'] == 'paragraph') {
@@ -55,6 +54,35 @@ foreach ($stories as $story) {
             }
         }
     }
+
+
+    foreach ($blogPostType as $key => $content) {
+        if ($key == 'content') {
+            // echo '<pre>';
+            //  var_dump($content);
+            // echo '</pre>';
+
+            foreach ($content as $con) {
+                if ($con['type'] == 'paragraph') {
+
+                    $arr = $con['content'];
+
+                    $contents_var .= '<p>';
+                    foreach ($arr as $ar) {
+                        if ($ar['marks'][0]['type'] == 'bold') {
+                            $contents_var .= '<strong>';
+                        }
+                        $contents_var .= $ar['text'];
+                        if ($ar['marks'][0]['type'] == 'bold') {
+                            $contents_var .= '</strong>';
+                        }
+                    }
+                    $contents_var .= '</p>';
+                }
+            }
+        }
+    }
+
     $blog_array[] = array(
         'name' => $story['content']['title'],
         'date' => $story['published_at'],
