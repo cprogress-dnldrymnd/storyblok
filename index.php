@@ -13,7 +13,7 @@ $client = new Client('Z5R6TMf4M0FDuypDqcwQIwtt');
 
 // Get all Stories from the article folder
 $client->getStories([
-    'page' => 1,
+    'page' => 20,
     'per_page' => 1,
     'starts_with' => 'blog',
 ]);
@@ -132,7 +132,7 @@ function get_contents_toplist($contents)
 }
 
 foreach ($stories as $story) {
-    $featured_image = $story['content']['coverImage'];
+    $featured_image = $story['content']['coverImage']['filename'];
     $introText = $story['content']['introText'];
     $blogPostType = $story['content']['blogPostType'][0]['content'];
 
@@ -140,6 +140,7 @@ foreach ($stories as $story) {
     $outroText = $story['content']['outroText'];
 
     $contents_var = '';
+
 
     $contents_var .= get_contents($introText);
     $contents_var .= get_contents($blogPostType);
@@ -178,8 +179,6 @@ require_once('../wp-admin/includes/image.php');
 
 foreach ($blog_array as $blog) {
     // Create post object
-
-
     $my_post = array(
         'post_title'    => wp_strip_all_tags($blog['post_title']),
         'post_content'  => $blog['post_content'],
@@ -189,10 +188,8 @@ foreach ($blog_array as $blog) {
     );
 
     // Insert the post into the database
-    $post = wp_insert_post($my_post);
-
-
-    media_sideload_image($blog['featured_image'], $post);
+   $post =  wp_insert_post($my_post);
+   media_sideload_image($blog['featured_image'], $post);
 }
 
 ?>
