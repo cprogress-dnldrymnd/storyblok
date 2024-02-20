@@ -116,14 +116,14 @@ foreach ($stories as $story) {
     $contents_var .= '<span class="blog-image"><img src="' . $featured_image['filename'] . '"/></span>';
     $contents_var .= '</p>';
 
-    echo '<pre>';
-    var_dump($blogPostType);
-    echo '</pre>';
+
     //$contents_var .= get_contents($introText);
     //$contents_var .= get_contents($blogPostType);
 
     if ($toplistEntries) {
-       
+        echo '<pre>';
+        var_dump($toplistEntries);
+        echo '</pre>';
         $contents_var .= get_contents($toplistEntries);
     }
 
