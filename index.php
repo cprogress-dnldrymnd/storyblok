@@ -193,6 +193,7 @@ foreach ($stories as $story) {
 
 <pre>
     <?php var_dump(get_post_meta(5165)) ?>
+    <?php var_dump(get_post_meta(5165, 'qodef_team_member_social_icons', true)) ?>
 </pre>
 
 <?php
