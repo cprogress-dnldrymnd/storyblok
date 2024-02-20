@@ -14,6 +14,7 @@ $client = new Client('Z5R6TMf4M0FDuypDqcwQIwtt');
 // Get all Stories from the article folder
 $client->getStories([
     'page' => 1,
+    'per_page' => 1,
     'starts_with' => 'blog',
 ]);
 $data = $client->getBody();
@@ -175,7 +176,10 @@ ___STORIES
 
 <?php
 require_once("../wp-load.php");
+
+foreach($blog_array as $blog) {
+
+}
+
 ?>
-<pre>
-<?php var_dump($blog_array); ?>
-</pre>
+
