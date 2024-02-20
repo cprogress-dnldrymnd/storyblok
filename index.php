@@ -92,12 +92,12 @@ foreach ($stories as $story) {
 }
 ?>
 
-<!--
+
 blog_array
 <pre>
     <?php var_dump($blog_array); ?>
 </pre>
-
+<!--
 ___STORIES
 <pre>
     <?php var_dump($stories); ?>
