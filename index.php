@@ -36,7 +36,7 @@ function get_contents($contents)
                 if ($con['type'] == 'paragraph') {
                     $contents_var .= '<p>';
                 } else if ($con['type'] == 'heading') {
-                    $contents_var .= '<h2>';
+                    $contents_var .= '<h' . $con['attrs']['level'] . '>';
                 }
                 foreach ($arr as $ar) {
 
@@ -66,7 +66,7 @@ function get_contents($contents)
                 if ($con['type'] == 'paragraph') {
                     $contents_var .= '</p>';
                 } else if ($con['type'] == 'heading') {
-                    $contents_var .= '</h2>';
+                    $contents_var .= '</h' . $con['attrs']['level'] . '>';
                 }
             }
         }
