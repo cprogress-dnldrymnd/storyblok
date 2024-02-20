@@ -235,6 +235,7 @@ foreach ($blog_array as $blog) {
 
     $my_post = array(
         'post_type' => 'team',
+        'post_title' => $blog['post_title'],
         'post_content'  => $blog['post_content'],
         'post_category' => array($blog['post_category']),
         'meta_input' => $blog['meta_input']
