@@ -48,11 +48,7 @@ function get_contents($contents, $content_arr = true)
 
                     foreach ($arr as $ar) {
 
-                        if ($ar['marks'][0]['type'] == 'bold') {
-                            $contents_var .= '<strong>';
-                        } else if ($ar['marks'][0]['type']  == 'link') {
-                            $contents_var .= '<a href="' . $ar['marks'][0]['attrs']['href'] . ' " target="' . $ar['marks'][0]['attrs']['target'] . ' ">';
-                        }
+                        $contents_var .= marks_open($con);
 
 
 
@@ -73,19 +69,11 @@ function get_contents($contents, $content_arr = true)
                         }
 
 
-                        if ($ar['marks'][0]['type'] == 'bold') {
-                            $contents_var .= '</strong>';
-                        } else if ($ar['marks'][0]['type']  == 'link') {
-                            $contents_var .= '</a>';
-                        }
+                        $contents_var .= marks_close($con);
                     }
                 } else {
 
-                    if ($con['marks'][0]['type'] == 'bold') {
-                        $contents_var .= '<strong>';
-                    } else if ($con['marks'][0]['type']  == 'link') {
-                        $contents_var .= '<a href="' . $con['marks'][0]['attrs']['href'] . ' " target="' . $con['marks'][0]['attrs']['target'] . ' ">';
-                    }
+                    $contents_var .= marks_open($con);
 
 
                     if ($con['type'] == 'text') {
@@ -96,11 +84,7 @@ function get_contents($contents, $content_arr = true)
                         $contents_var .= '<span class="blog-image"><img src="https://ten87.theprogressteam.co.uk/wp-content/uploads/2024/02/' . basename($filename) . '"/></span>';
                     }
 
-                    if ($con['marks'][0]['type'] == 'bold') {
-                        $contents_var .= '</strong>';
-                    } else if ($con['marks'][0]['type']  == 'link') {
-                        $contents_var .= '</a>';
-                    }
+                    $contents_var .= marks_close($con);
                 }
 
                 if ($con['type'] == 'paragraph') {
@@ -116,6 +100,31 @@ function get_contents($contents, $content_arr = true)
     return $contents_var;
 }
 
+
+
+function marks_open($con)
+{
+    $contents_var = '';
+    if ($con['marks'][0]['type'] == 'bold') {
+        $contents_var .= '<strong>';
+    } else if ($con['marks'][0]['type']  == 'link') {
+        $contents_var .= '<a href="' . $con['marks'][0]['attrs']['href'] . ' " target="' . $con['marks'][0]['attrs']['target'] . ' ">';
+    }
+
+    return $contents_var;
+}
+
+function marks_close($con)
+{
+    $contents_var = '';
+
+    if ($con['marks'][0]['type'] == 'bold') {
+        $contents_var .= '</strong>';
+    } else if ($con['marks'][0]['type']  == 'link') {
+        $contents_var .= '</a>';
+    }
+    return $contents_var;
+}
 
 function get_contents_toplist($contents)
 {
