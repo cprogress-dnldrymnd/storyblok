@@ -82,9 +82,11 @@ function get_contents_toplist($contents)
 
     $contents_arr = $contents['text'];
     $headline = isset($contents['headline']) ? $contents['headline'] : false;
+    $subHeadline2 = isset($contents['subHeadline2']) ? $contents['subHeadline2'] : false;
     $subHeadline1 = isset($contents['subHeadline1']) ? $contents['subHeadline1'] : false;
     $spotifyUrl = isset($contents['spotifyUrl']) ? $contents['spotifyUrl'] : false;
-
+    $websiteUrl = isset($contents['websiteUrl']) ? $contents['websiteUrl'] : false;
+    
     $contents_var .= '<div class="top-list-item">';
     if ($headline) {
         $contents_var .= '<h2>';
@@ -96,12 +98,21 @@ function get_contents_toplist($contents)
         $contents_var .= $subHeadline1;
         $contents_var .= '</div>';
     }
-
+    if ($subHeadline2) {
+        $contents_var .= '<div class="subheading2">';
+        $contents_var .= $subHeadline2;
+        $contents_var .= '</div>';
+    }
     $contents_var .= get_contents($contents_arr);
    
     if ($spotifyUrl) {
-        $contents_var .= '<div class="spotify">';
+        $contents_var .= '<div class="spotify-icon">';
         $contents_var .= '<a href="' . $spotifyUrl . '" target="_blank"> SPOTIFY </a>';
+        $contents_var .= '</div>';
+    }
+    if ($websiteUrl) {
+        $contents_var .= '<div class="website-icon">';
+        $contents_var .= '<a href="' . $websiteUrl . '" target="_blank"> WEBSITE </a>';
         $contents_var .= '</div>';
     }
     $contents_var .= '</div>';
