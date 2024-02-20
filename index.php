@@ -36,6 +36,8 @@ function get_contents($contents)
 
                         if ($ar['marks'][0]['type'] == 'bold') {
                             $contents_var .= '<strong>';
+                        } else if ($ar['type']  == 'link') {
+                            $contents_var .= '<a href="'.$ar['attrs']['href'].'">';
                         }
 
 
@@ -48,7 +50,10 @@ function get_contents($contents)
 
                         if ($ar['marks'][0]['type'] == 'bold') {
                             $contents_var .= '</strong>';
+                        } else if ($ar['type']  == 'link') {
+                            $contents_var .= '</a>';
                         }
+
                     }
                     $contents_var .= '</p>';
                 }
