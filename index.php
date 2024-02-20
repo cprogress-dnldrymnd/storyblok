@@ -66,12 +66,7 @@ function get_contents($contents)
 foreach ($stories as $story) {
     $featured_image = $story['content']['coverImage'];
     $introText = $story['content']['introText'];
-
-
-    $blogPostType = $story['content']['blogPostType'][0];
-
-
-    //$blogPostType = $story['content']['blogPostType'][0]['content'];
+    $blogPostType = $story['content']['blogPostType'][0]['content'];
 
     $toplistEntries = $story['content']['blogPostType'][0]['toplistEntries'];
     $outroText = $story['content']['outroText'];
@@ -86,12 +81,12 @@ foreach ($stories as $story) {
     //$contents_var .= get_contents($introText);
     //$contents_var .= get_contents($blogPostType);
 
-    foreach ($blogPostType as $key => $blogPost) {
-        if(isset($blogPost['component'])) {
-            echo $blogPost['blogPost'];
+    if ($toplistEntries) {
+        foreach ($toplistEntries as $toplistEntry) {
+            $contents_var .= get_contents($toplistEntries);
         }
-        echo '<br>';
     }
+
     // $contents_var .= get_contents($outroText);
 
 
@@ -116,7 +111,7 @@ ___STORIES
 ?>
 echo 'ddsdsdsdsds
 <pre>
-<?php var_dump($toplistEntries); ?>
+<?php var_dump($blog_array); ?>
 </pre>
 
 <pre>
