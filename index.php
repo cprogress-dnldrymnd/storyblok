@@ -37,7 +37,7 @@ function get_contents($contents)
                         if ($ar['marks'][0]['type'] == 'bold') {
                             $contents_var .= '<strong>';
                         } else if ($ar['marks'][0]['type']  == 'link') {
-                            $contents_var .= '<a href="' . $ar['marks'][0]['attrs']['href'] . ' target="' . $ar['marks'][0]['attrs']['target'] . '">';
+                            $contents_var .= '<a href="' . $ar['marks'][0]['attrs']['href'] . ' " target="' . $ar['marks'][0]['attrs']['target'] . ' ">';
                         }
 
 
