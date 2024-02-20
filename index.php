@@ -141,11 +141,6 @@ foreach ($stories as $story) {
 
     $contents_var = '';
 
-    $contents_var .= '<p>';
-    $contents_var .= '<span class="blog-image"><img src="' . $featured_image['filename'] . '"/></span>';
-    $contents_var .= '</p>';
-
-
     $contents_var .= get_contents($introText);
     $contents_var .= get_contents($blogPostType);
 
@@ -163,6 +158,7 @@ foreach ($stories as $story) {
         'post_title' => $story['content']['title'],
         'post_date' => $story['published_at'],
         'post_content' => $contents_var,
+        'featured_image' => $featured_image,
     );
 }
 ?>
