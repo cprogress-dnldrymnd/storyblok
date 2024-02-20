@@ -182,6 +182,33 @@ function get_contents_toplist($contents)
 
 
 foreach ($stories as $story) {
+    $featured_image = $story['content']['coverImage']['filename'];
+
+
+    $introText = $story['content']['introText'];
+    $blogPostType = $story['content']['blogPostType'][0]['content'];
+
+    $toplistEntries = $story['content']['blogPostType'][0]['toplistEntries'];
+    $outroText = $story['content']['outroText'];
+
+    $category = $story['content']['postCategory'];
+
+    $post_category = get_term_by('name', $category, 'category')->term_id;
+
+    $contents_var = '';
+
+    $contents_var .= get_contents($introText);
+    $contents_var .= get_contents($blogPostType);
+
+    if ($toplistEntries) {
+        $contents_var .= '<div class="top-list-item-wrapper">';
+        foreach ($toplistEntries as $toplistEntry) {
+            $contents_var .= get_contents_toplist($toplistEntry);
+        }
+        $contents_var .= '</div>';
+    }
+
+    $contents_var .= get_contents($outroText);
 
     $blog_array[] = array(
         'post_title' => $story['content']['name'],
